@@ -1,0 +1,16 @@
+<div id="content">
+  <div class="row">
+    <sa-big-breadcrumbs [items]="['Product', 'Upload']" icon="pencil-square-o" class="col-xs-12 col-sm-9 col-md-9 col-lg-9"></sa-big-breadcrumbs>
+  </div>
+  <sa-widgets-grid>
+    <div class="row">
+      <article class="col-sm-12 col-md-12 col-lg-12">
+        <sa-widget [editbutton]="false" [custombutton]="false">
+          <div class="widget-body">
+            <app-product-form></app-product-form>
+          </div>
+        </sa-widget>
+      </article>
+    </div>
+  </sa-widgets-grid>
+</div>

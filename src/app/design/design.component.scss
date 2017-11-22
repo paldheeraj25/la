@@ -1,0 +1,45 @@
+.m-15 {
+  margin: 15px;
+}
+
+.m-t-20 {
+  margin-top: 20px;
+}
+
+.m-b-10 {
+  margin-bottom: 10px;
+}
+
+.modal-body {
+  min-height: 650px;
+  padding-left: 50px;
+  background-image: url("../../assets/img/iphoneview.png");
+  background-size: 350px 640px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.content {
+  padding-left: 26%;
+  padding-top: 18%;
+  padding-right: 27%;
+  margin-top: 10px;
+  margin-right: 20px;
+}
+
+.content img {
+  min-height : 150px; 
+  width : 220px;
+}
+
+.inner-content {
+  overflow: scroll; 
+  height : 410px;
+}
+
+.panel.panel-success, .panel.panel-info {
+  float: left;
+  width: 100%;
+  overflow-y: auto;
+  height: 573px;
+}
