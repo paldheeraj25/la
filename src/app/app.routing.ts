@@ -34,6 +34,11 @@ export const routes: Routes = [
         path: 'advertisement',
         loadChildren: 'app/advertisement/advertisement.module#AdvertisementModule',
         data: { pageTitle: 'Advertisement' }
+      },
+      {
+        path: 'user',
+        loadChildren: 'app/user/user.module#UserModule',
+        data: { pageTitle: 'User' }
       }
     ]
   },

@@ -1,0 +1,68 @@
+<div id="content">
+  <div class="row">
+    <sa-big-breadcrumbs [items]="['Users', 'List']" icon="table" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></sa-big-breadcrumbs>
+  </div>
+  <div class="row">
+    <article class="col-sm-12">
+      <sa-widget [editbutton]="false" color="darken">
+        <header><span class="widget-icon"> <i class="fa fa-table"></i> </span>
+          <h2>Users</h2>
+        </header>
+        <div>
+          <div class="widget-body no-padding">
+            <table class="table table-striped" [mfData]="users | async" #mf="mfDataTable" [mfRowsOnPage]="5">
+              <thead>
+                <tr>
+                  <th>
+                    <mfDefaultSorter by="username">User Name</mfDefaultSorter>
+                  </th>
+                  <th>
+                    <mfDefaultSorter by="email">Email</mfDefaultSorter>
+                  </th>
+                  <th>
+                    <mfDefaultSorter by="role">Role</mfDefaultSorter>
+                  </th>
+                  <th>
+                    <mfDefaultSorter by="activate">Activate</mfDefaultSorter>
+                  </th>
+                  <th>
+                    <mfDefaultSorter>Action</mfDefaultSorter>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of mf.data">
+                  <td>{{item.username}}</td>
+                  <td>{{item.email}}</td>
+                  <td>{{item.role}}</td>
+                  <td>{{item.activate}}</td>
+                  <td>
+                    <div class="btn-group dropdown" dropdown>
+                      <a class="btn btn-primary btn-xs" (click)="goToView(item)">Action</a>
+                      <a class="btn btn-primary btn-xs dropdown-toggle" dropdownToggle><span class="caret"></span></a>
+                      <ul *dropdownMenu class="dropdown-menu">
+                        <li>
+                          <a (click)="editUser(item)">Edit</a>
+                        </li>
+                        <li>
+                          <a (click)="deleteUser(item)">Delete</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="4">
+                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </sa-widget>
+    </article>
+  </div>
+</div>

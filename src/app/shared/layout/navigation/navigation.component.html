@@ -34,6 +34,18 @@
       <li routerLinkActive="active">
         <a routerLink="/advertisement" title="Advertisement"><i class="fa fa-lg fa-fw fa-paper-plane"></i> <span class="menu-item-parent">{{'Advertisement' | i18n}}</span></a>
       </li>
+      <li>
+        <a href="#"><i class="fa fa-lg fa-fw fa-user"></i> <span
+          class="menu-item-parent">{{'User Managment' | i18n}}</span></a>
+        <ul>
+          <li routerLinkActive="active">
+            <a routerLink="/user/create">{{'Create' | i18n}}</a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/user/list">{{'List' | i18n}}</a>
+          </li>
+        </ul>
+      </li>
     </ul>
   </nav>
 
