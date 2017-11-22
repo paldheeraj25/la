@@ -15,6 +15,7 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { FileUtil } from "./product/product-form/file.util";
 import { ProductDataService } from "./product/providers/product-data.service";
+import { AdvertisementDataService } from "./advertisement/providers/advertisement-data.service";
 
 // Core providers
 import { CoreModule } from "./core/core.module";
@@ -25,7 +26,8 @@ const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
   AppState,
   ProductDataService,
-  FileUtil
+  FileUtil,
+  AdvertisementDataService
 ];
 
 type StoreType = {
