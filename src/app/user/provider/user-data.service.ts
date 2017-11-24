@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Http, Headers } from '@angular/http';
+import { environment } from '../../../environments/environment';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
 
@@ -9,9 +10,9 @@ import { Product } from "../interfaces/product";
 
 @Injectable()
 export class UserDataService {
-  private createUrl = "http://localhost:5012/api/register";
-  private listUrl = "http://localhost:5012/api/users";
-  private deleteUrl = "http://localhost:5012/api/users";
+  private createUrl = environment.api + "register";
+  private listUrl = environment.api + "users";
+  private deleteUrl = environment.api + "users";
   constructor(private http: Http) { }
 
   create(user: any) {
