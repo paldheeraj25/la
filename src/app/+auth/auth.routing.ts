@@ -6,6 +6,10 @@ import { LoginModule } from "./+login/login.modul";
 
 export const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'login'
+  },
+  {
     path: 'login',
     loadChildren: './+login/login.module#LoginModule'
   },

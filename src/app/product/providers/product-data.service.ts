@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
+import { environment } from '../../../environments/environment';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
 
@@ -8,8 +9,8 @@ import { Product } from "../interfaces/product";
 
 @Injectable()
 export class ProductDataService {
-  private productUploadUrl = "http://localhost:5012/api/upload";
-  private productListUrl = "http://localhost:5012/api/products";
+  private productUploadUrl = environment.api + "upload";
+  private productListUrl = environment.api + "products";
   public selectedProduct: Product;
   constructor(private http: Http) { }
 
