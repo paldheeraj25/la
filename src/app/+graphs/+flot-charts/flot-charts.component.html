@@ -3,7 +3,7 @@
 
   <div class="row">
     <sa-big-breadcrumbs icon="bar-chart-o" [items]="['Graphs', 'Flot Chart']" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></sa-big-breadcrumbs>
-    <sa-stats></sa-stats>
+    <!--<sa-stats></sa-stats>-->
   </div>
   <!-- widget grid -->
   <sa-widgets-grid>
@@ -24,8 +24,7 @@
 
           <div>
             <div class="widget-body ">
-              <sa-flot-chart [data]="flotData.barChartData"
-                         [options]="flotExamples.barChartDemoOptions" ></sa-flot-chart>
+              <sa-flot-chart [data]="flotData.barChartData" [options]="flotExamples.barChartDemoOptions"></sa-flot-chart>
 
             </div>
           </div>
@@ -41,8 +40,7 @@
 
           <div>
             <div class="widget-body ">
-              <sa-flot-chart [data]="flotData.sinChartData"
-                         [options]="flotExamples.sinChartDemoOptions" ></sa-flot-chart>
+              <sa-flot-chart [data]="flotData.sinChartData" [options]="flotExamples.sinChartDemoOptions"></sa-flot-chart>
             </div>
           </div>
         </sa-widget>
@@ -59,8 +57,7 @@
 
           <div>
             <div class="widget-body ">
-              <sa-flot-chart [data]="updatingData"
-                         [options]="flotExamples.autoUpdatingChartDemoOptions" ></sa-flot-chart>
+              <sa-flot-chart [data]="updatingData" [options]="flotExamples.autoUpdatingChartDemoOptions"></sa-flot-chart>
             </div>
           </div>
         </sa-widget>
@@ -76,8 +73,7 @@
 
           <div>
             <div class="widget-body ">
-              <sa-flot-chart [data]="flotData.horizontalBarChartData"
-                         [options]="flotExamples.horizontalChartDemoOptions" ></sa-flot-chart>
+              <sa-flot-chart [data]="flotData.horizontalBarChartData" [options]="flotExamples.horizontalChartDemoOptions"></sa-flot-chart>
             </div>
           </div>
         </sa-widget>
@@ -94,8 +90,7 @@
 
           <div>
             <div class="widget-body ">
-              <sa-flot-chart [data]="flotData.fillChartData"
-                         [options]="flotExamples.fillChartDemoOptions" ></sa-flot-chart>
+              <sa-flot-chart [data]="flotData.fillChartData" [options]="flotExamples.fillChartDemoOptions"></sa-flot-chart>
             </div>
           </div>
         </sa-widget>
@@ -113,8 +108,7 @@
 
           <div>
             <div class="widget-body ">
-              <sa-flot-chart [data]="flotData.pieChartData"
-                         [options]="flotExamples.pieChartDemoOptions" ></sa-flot-chart>
+              <sa-flot-chart [data]="flotData.pieChartData" [options]="flotExamples.pieChartDemoOptions"></sa-flot-chart>
             </div>
           </div>
         </sa-widget>
@@ -130,8 +124,7 @@
 
           <div>
             <div class="widget-body ">
-              <sa-flot-chart [data]="flotData.siteStatsData"
-                         [options]="flotExamples.siteStatsDemoOptions" ></sa-flot-chart>
+              <sa-flot-chart [data]="flotData.siteStatsData" [options]="flotExamples.siteStatsDemoOptions"></sa-flot-chart>
             </div>
           </div>
         </sa-widget>

@@ -1,7 +1,7 @@
 <div id="content">
   <div class="row">
     <sa-big-breadcrumbs icon="bar-chart-o" [items]="['Graphs', 'Morris Charts']" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></sa-big-breadcrumbs>
-    <sa-stats></sa-stats>
+    <!--<sa-stats></sa-stats>-->
   </div>
   <sa-widgets-grid>
     <div class="row" *ngIf="morrisDemoData">
@@ -14,16 +14,13 @@
           </header>
           <div>
             <div class="widget-body no-padding">
-              <sa-morris-graph [data]="morrisDemoData.sales"
-                               type="area"
-                               [options]="{
+              <sa-morris-graph [data]="morrisDemoData.sales" type="area" [options]="{
                               xkey: 'period',
                               ykeys: ['iphone', 'ipad', 'itouch'],
                               labels: ['iPhone', 'iPad', 'iPod Touch'],
                               pointSize: [2],
                               hideHover: 'auto'
-                           }"
-              ></sa-morris-graph>
+                           }"></sa-morris-graph>
             </div>
           </div>
         </sa-widget>
@@ -42,9 +39,7 @@
 
           <div>
             <div class="widget-body no-padding">
-              <sa-morris-graph [data]="morrisDemoData['area-demo']"
-                               type="area"
-                               [options]="{
+              <sa-morris-graph [data]="morrisDemoData['area-demo']" type="area" [options]="{
                               xkey: 'x',
                               ykeys: ['y', 'z'],
                               labels: ['Y', 'Z']
@@ -68,9 +63,7 @@
 
           <div>
             <div class="widget-body no-padding">
-              <sa-morris-graph [data]="morrisDemoData['bar-demo']"
-                               type="bar"
-                               [options]="{
+              <sa-morris-graph [data]="morrisDemoData['bar-demo']" type="bar" [options]="{
                               xkey: 'x',
                               ykeys: 'y',
                               labels: 'Y',
@@ -97,9 +90,7 @@
           <div>
             <div class="widget-body no-padding">
 
-              <sa-morris-graph [data]="morrisDemoData['normal-bar-demo']"
-                               type="bar"
-                               [options]="{
+              <sa-morris-graph [data]="morrisDemoData['normal-bar-demo']" type="bar" [options]="{
                               xkey: 'x',
                               ykeys: ['y', 'z', 'a'],
                               labels: ['Y', 'Z', 'A']
@@ -125,9 +116,7 @@
           <div>
             <div class="widget-body no-padding">
 
-              <sa-morris-graph [data]="morrisDemoData['stacked-bar-demo']"
-                               type="bar"
-                               [options]="{
+              <sa-morris-graph [data]="morrisDemoData['stacked-bar-demo']" type="bar" [options]="{
                               xkey: 'x',
                               ykeys: ['y', 'z', 'a'],
                               labels: ['Y', 'Z', 'A'],
@@ -153,9 +142,7 @@
 
           <div>
             <div class="widget-body no-padding">
-              <sa-morris-graph [data]="morrisDemoData['line-year-demo']"
-                               type="line"
-                               [options]="{
+              <sa-morris-graph [data]="morrisDemoData['line-year-demo']" type="line" [options]="{
                               xkey: 'period',
                               ykeys: ['licensed', 'sorned'],
                               labels: ['Licensed', 'SORN']
@@ -178,9 +165,7 @@
 
           <div>
             <div class="widget-body no-padding">
-              <sa-morris-graph [data]="morrisDemoData['donut-demo']"
-                               type="donut"
-                               [options]="{
+              <sa-morris-graph [data]="morrisDemoData['donut-demo']" type="donut" [options]="{
                               formater: percentageFormat
               }"></sa-morris-graph>
 
@@ -202,9 +187,7 @@
           <div>
             <div class="widget-body no-padding">
 
-              <sa-morris-graph [data]="morrisDemoData['line-time-demo']"
-                               type="line"
-                               [options]="{
+              <sa-morris-graph [data]="morrisDemoData['line-time-demo']" type="line" [options]="{
                               xkey: 'period',
                               ykeys: ['licensed', 'sorned'],
                               labels: ['Licensed', 'SORN'],
@@ -228,9 +211,7 @@
 
           <div>
             <div class="widget-body no-padding">
-              <sa-morris-graph [data]="morrisDemoData['line-graph-a-demo']"
-                               type="line"
-                               [options]="{
+              <sa-morris-graph [data]="morrisDemoData['line-graph-a-demo']" type="line" [options]="{
                               xkey: 'period',
                               ykeys: ['a'],
                               labels: ['Series A'],
@@ -254,9 +235,7 @@
 
           <div>
             <div class="widget-body no-padding">
-              <sa-morris-graph [data]="morrisDemoData['line-graph-b-demo']"
-                               type="line"
-                               [options]="{
+              <sa-morris-graph [data]="morrisDemoData['line-graph-b-demo']" type="line" [options]="{
                               xkey: 'period',
                               ykeys: ['licensed', 'sorned', 'other'],
                               labels: ['Licensed', 'SORN', 'Other'],
@@ -280,9 +259,7 @@
 
           <div>
             <div class="widget-body no-padding">
-              <sa-morris-graph [data]="morrisDemoData['no-grid-demo']"
-                               type="line"
-                               [options]="{
+              <sa-morris-graph [data]="morrisDemoData['no-grid-demo']" type="line" [options]="{
                               xkey: 'period',
                               ykeys: ['licensed', 'sorned'],
                               labels: ['Licensed', 'SORN'],
@@ -307,9 +284,7 @@
 
           <div>
             <div class="widget-body no-padding">
-              <sa-morris-graph [data]="morrisDemoData['line-graph-c-demo']"
-                               type="line"
-                               [options]="{
+              <sa-morris-graph [data]="morrisDemoData['line-graph-c-demo']" type="line" [options]="{
                               xkey: 'elapsed',
                               ykeys: ['value'],
                               labels: ['value'],

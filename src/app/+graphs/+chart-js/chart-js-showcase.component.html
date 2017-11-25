@@ -1,14 +1,14 @@
 <!-- MAIN CONTENT -->
-<div id="content"  >
+<div id="content">
 
   <div class="row">
     <sa-big-breadcrumbs icon="bar-chart-o" [items]="['Graphs', 'Chart.js']" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></sa-big-breadcrumbs>
-    <sa-stats></sa-stats>
+    <!--<sa-stats></sa-stats>-->
   </div>
   <!-- widget grid -->
   <sa-widgets-grid>
 
-    <div class="row"  *ngIf="chartjsData">
+    <div class="row" *ngIf="chartjsData">
       <article class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <sa-widget [editbutton]="false">
           <header>

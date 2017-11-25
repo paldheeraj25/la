@@ -16,6 +16,8 @@ export class AnalyticsComponent implements OnInit {
   public chart: any;
   public segmentedPieChart: any;
   public form: any;
+  public oldValue: any;
+  public newValue: any;
 
   //hardcoded
   private yearlyGraph = new Chart({
