@@ -1,0 +1,49 @@
+<div id="content">
+
+  <div class="row">
+    <sa-big-breadcrumbs [items]="['Dashboard', 'My Dashboard']" icon="home" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></sa-big-breadcrumbs>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2 col-lg-2">
+      <form [formGroup]="form">
+        <ul class="list-group">
+          <li class="list-group-item active">Taps per time</li>
+          <li class="list-group-item">Weekly <input class="pull-right" type="radio" name="tapInfo" value="weekly" formControlName="tapInfo" (ngModelChange)="generateGraph(oldValue, newValue = $event)"></li>
+          <li class="list-group-item">Monthly <input class="pull-right" type="radio" name="tapInfo" value="monthly" formControlName="tapInfo" (ngModelChange)="generateGraph(oldValue, newValue = $event)"></li>
+          <li class="list-group-item">Yearly <input class="pull-right" type="radio" name="tapInfo" value="yearly" formControlName="tapInfo" (ngModelChange)="generateGraph(oldValue, newValue = $event)"></li>
+        </ul>
+      </form>
+      <form>
+        <ul class="list-group">
+          <li class="list-group-item active">Taps per segment</li>
+          <li class="list-group-item">Segment <input class="pull-right" type="radio" name="segmented" value="segment"></li>
+          <li class="list-group-item">Designer <input class="pull-right" type="radio" name="designer" value="designer"></li>
+          <li class="list-group-item">Shop<input class="pull-right" type="radio" name="shop" value="shop"></li>
+        </ul>
+      </form>
+    </div>
+    <div class="col-md-10 col-lg-10">
+      <div [chart]="chart"></div>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-4 col-lg-4">
+      <div [chart]="segmentedPieChart"></div>
+    </div>
+    <div class="col-md-4 col-lg-4">
+      <div [chart]="segmentedManufacturePie"></div>
+    </div>
+    <div class="col-md-4 col-lg-4">
+      <div [chart]="segmentedShopePie"></div>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <article class="col-sm-12 col-md-12 col-lg-12">
+      <bird-eye-widget></bird-eye-widget>
+    </article>
+  </div>
+
+</div>

@@ -13,6 +13,7 @@ import { routing } from './app.routing'
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
+import { AuthService } from "./providers/auth/auth.service";
 import { FileUtil } from "./product/product-form/file.util";
 import { ProductDataService } from "./product/providers/product-data.service";
 import { AdvertisementDataService } from "./advertisement/providers/advertisement-data.service";
@@ -26,6 +27,7 @@ import { SmartadminLayoutModule } from "./shared/layout/layout.module";
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
   AppState,
+  AuthService,
   ProductDataService,
   FileUtil,
   AdvertisementDataService,

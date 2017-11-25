@@ -21,6 +21,11 @@ export const routes: Routes = [
         loadChildren: 'app/+home/home.module#HomeModule'
       },
       {
+        path: 'dashboard',
+        loadChildren: 'app/+dashboard/dashboard.module#DashboardModule',
+        data: { pageTitle: 'Dashboard' }
+      },
+      {
         path: 'product',
         loadChildren: 'app/product/product.module#ProductModule',
         data: { pageTitle: 'Product' }
@@ -42,7 +47,7 @@ export const routes: Routes = [
       }
     ]
   },
-
+  { path: 'auth', component: AuthLayoutComponent, loadChildren: 'app/+auth/auth.module#AuthModule' }
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes, { useHash: true });

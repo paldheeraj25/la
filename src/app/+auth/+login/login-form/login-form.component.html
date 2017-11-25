@@ -1,0 +1,37 @@
+<form class="smart-form client-form" (ngSubmit)="onSubmit(loginForm.value)" #loginForm="ngForm">
+  <header>
+    Sign In
+  </header>
+  <fieldset>
+    <section>
+      <label class="label">E-mail</label>
+      <label class="input"> <i class="icon-append fa fa-user"></i>
+        <input type="email" name="email" #emailRef="ngModel" required ngModel>
+        <div [hidden] = "emailRef.valid || emailRef.pristine" class="alert alert-danger">
+          Email is required
+        </div>
+      </label>
+    </section>
+    <section>
+      <label class="label">Password</label>
+      <label class="input"> <i class="icon-append fa fa-lock"></i>
+        <input type="password" name="password" #passwordRef = "ngModel" required ngModel>
+        <div [hidden] = "passwordRef.valid || passwordRef.pristine" class="alert alert-danger">
+          Password is required
+        </div>
+      </label>
+      <div class="note">
+        <a routerLink="/auth/forgot-password">Forgot password?</a>
+      </div>
+    </section>
+    <section>
+      <label class="checkbox">
+        <input type="checkbox" name="remember" checked>
+      <i></i>Stay signed in</label>
+      <label class="text-danger" *ngIf="error">Invalid login : Combination of user name and password is not correct</label>
+    </section>
+  </fieldset>
+  <footer>
+    <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Sign in</button>
+  </footer>
+</form>
