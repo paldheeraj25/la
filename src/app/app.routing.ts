@@ -14,7 +14,7 @@ export const routes: Routes = [
     component: MainLayoutComponent,
     children: [
       {
-        path: '', redirectTo: 'home', pathMatch: 'full'
+        path: '', redirectTo: 'auth/login', pathMatch: 'full'
       },
       {
         path: 'home',

@@ -22,7 +22,7 @@ export const config: any = {
 
     {
       name: "smart-style-1",
-      logo: "assets/img/logo-white.png",
+      logo: "",
       skinBtnClass: "btn btn-block btn-xs txt-color-white",
       style: {
         background: '#3A4558'
@@ -42,7 +42,7 @@ export const config: any = {
 
     {
       name: "smart-style-3",
-      logo: "assets/img/logo-pale.png",
+      logo: "",
       skinBtnClass: "btn btn-xs btn-block txt-color-white margin-top-5",
       style: {
         background: '#f78c40'
@@ -52,7 +52,7 @@ export const config: any = {
 
     {
       name: "smart-style-4",
-      logo: "assets/img/logo-pale.png",
+      logo: "",
       skinBtnClass: "btn btn-xs btn-block txt-color-white margin-top-5",
       style: {
         background: '#bbc0cf',
@@ -64,7 +64,7 @@ export const config: any = {
 
     {
       name: "smart-style-5",
-      logo: "assets/img/logo-pale.png",
+      logo: "",
       skinBtnClass: "btn btn-xs btn-block txt-color-white margin-top-5",
       style: {
         background: 'rgba(153, 179, 204, 0.2)',
@@ -287,10 +287,10 @@ export const config: any = {
       history.back();
     },
     'scroll up': (): any => {
-      jQuery('html, body').animate({scrollTop: 0}, 100);
+      jQuery('html, body').animate({ scrollTop: 0 }, 100);
     },
     'scroll down': (): any => {
-      jQuery('html, body').animate({scrollTop: jQuery(document).height()}, 100);
+      jQuery('html, body').animate({ scrollTop: jQuery(document).height() }, 100);
     },
     'hide navigation': {
       type: 'layout',
