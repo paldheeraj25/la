@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from "@angular/forms";
 import { DataTableModule } from "angular2-datatable";
+import { FileUploadModule } from 'ng2-file-upload';
 import { ProductComponent } from './product.component';
 import { productRouting } from "./product.routing";
 import { SmartadminModule } from "../shared/smartadmin.module";
@@ -17,7 +18,8 @@ import { ShowSelectedPipe } from "../pipes/show-selected.pipe";
     SmartadminModule,
     FormsModule,
     SmartadminDatatableModule,
-    DataTableModule
+    DataTableModule,
+    FileUploadModule
   ],
   declarations: [ProductComponent, ProductFormComponent, ProductListComponent, ShowSelectedPipe]
 })

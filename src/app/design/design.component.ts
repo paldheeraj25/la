@@ -25,7 +25,6 @@ export class DesignComponent implements OnInit {
     { name: "heading", container: "Header", id: 0 },
     { name: "image", container: "Image", id: 1 },
     { name: "description", container: "Description", id: 2 },
-    // { name: "border", container: "Bottom border", id: 3},
     { name: "item", container: "Item Name", id: 4 },
     { name: "GWInGms", container: "GW in grams", id: 5 },
     { name: "netWeight", container: "Net Weight", id: 6 },

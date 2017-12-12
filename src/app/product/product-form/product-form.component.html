@@ -4,12 +4,13 @@
     <h3> Product upload in progress ...</h3>
   </div>
 </div>
-<form id="checkout-form" class="smart-form" #productForm="ngForm" (ngSubmit)="productUpload(productForm.value)" *ngIf="!showLoader">
+<form id="checkout-form" class="smart-form" #productForm="ngForm" (ngSubmit)="uploader.queue[0].upload()" *ngIf="!showLoader"
+  enctype="multipart/form-data">
   <fieldset>
     <div class="row">
       <section class="col col-6">
         <label class="input"> <i class="icon-prepend fa fa-cubes"></i>
-          <input type="text" #nameRef="ngModel" required name="name" placeholder="Product name" ngModel>
+          <input type="text" #nameRef="ngModel" required name="name" placeholder="Product name" [(ngModel)]="name">
         </label>
         <div [hidden]="nameRef.valid || nameRef.pristine" class="alert alert-danger">
           Name is required
@@ -17,7 +18,7 @@
       </section>
       <section class="col col-6">
         <label class="input"> <i class="icon-prepend fa fa-cubes"></i>
-          <input type="text" #batchRef="ngModel" required name="batchId" placeholder="Product Batch" ngModel>
+          <input type="text" #batchRef="ngModel" required name="batchId" placeholder="Product Batch" [(ngModel)]="batchId">
         </label>
         <div [hidden]="batchRef.valid || batchRef.pristine" class="alert alert-danger">
           Batch is required
@@ -28,12 +29,63 @@
     <div class="row">
       <section class="col col-6">
         <label class="input"> <i class="icon-prepend fa fa-calendar"></i>
-          <input type="date" name="manufacture" placeholder="Manufactured On"  date-format="dd/mm/yy" ngModel />
+          <input type="date" name="manufacture" placeholder="Manufactured On"  date-format="dd/mm/yy" [(ngModel)]="manufacture" />
         </label>
       </section>
       <section class="col col-6">
         <label class="input"> <i class="icon-prepend fa fa-calendar"></i>
-          <input type="date" name="expire" placeholder="Expire On" date-format="dd/mm/yy" ngModel />
+          <input type="date" name="expire" placeholder="Expire On" date-format="dd/mm/yy" [(ngModel)]="expire" />
+        </label>
+      </section>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <div class="row">
+      <section class="col col-6">
+        <label class="input"> <i class="icon-prepend fa fa-cubes"></i>
+          <input type="text" #nameRef="ngModel" name="manOrMachine" placeholder="Man/Machine made" [(ngModel)]="manOrMachine"/>
+        </label>
+      </section>
+      <section class="col col-6">
+        <label class="input"> <i class="icon-prepend fa fa-cubes"></i>
+          <input type="text" #batchRef="ngModel" name="goldCarat" placeholder="Gold Carat" [(ngModel)]="goldCarat"/>
+        </label>
+      </section>
+    </div>
+    <div class="row">
+      <section class="col col-6">
+        <label class="input"> <i class="icon-prepend fa fa-cubes"></i>
+          <input type="text" #nameRef="ngModel" name="percentChrg" placeholder="making % and charg" [(ngModel)]="percentChrg"/>
+        </label>
+      </section>
+      <section class="col col-6">
+        <label class="input"> <i class="icon-prepend fa fa-cubes"></i>
+          <input type="text" #batchRef="ngModel" name="grossWeight" placeholder="Gross Weight" [(ngModel)]="grossWeight"/>
+        </label>
+      </section>
+    </div>
+    <div class="row">
+      <section class="col col-6">
+        <label class="input"> <i class="icon-prepend fa fa-cubes"></i>
+          <input type="text" #nameRef="ngModel" name="netWeight" placeholder="Net Weight" [(ngModel)]="netWeight"/>
+        </label>
+      </section>
+      <section class="col col-6">
+        <label class="input"> <i class="icon-prepend fa fa-cubes"></i>
+          <input type="text" #batchRef="ngModel" name="stoneWeight" placeholder="Stone Weight" [(ngModel)]="stoneWeight"/>
+        </label>
+      </section>
+    </div>
+    <div class="row">
+      <section class="col col-6">
+        <label class="input"> <i class="icon-prepend fa fa-cubes"></i>
+          <input type="text" #nameRef="ngModel" name="beadsWeight" placeholder="Beads Weight" [(ngModel)]="beadsWeight"/>
+        </label>
+      </section>
+      <section class="col col-6">
+        <label class="input"> <i class="icon-prepend fa fa-cubes"></i>
+          <input type="text" #batchRef="ngModel" name="perGramWeight" placeholder="Per Gram Weight" [(ngModel)]="perGramWeight"/>
         </label>
       </section>
     </div>
@@ -43,26 +95,27 @@
     <div class="row">
       <section class="col col-5">
         <label class="input">
-          <input type="text" name="heading" placeholder="Heading Title" ngModel>
+          <input type="text" name="heading" placeholder="Heading Title" [(ngModel)]="heading"/>
         </label>
       </section>
 
       <section class="col col-4">
         <label class="input">
-          <input type="text" name="country" placeholder="Country" ngModel>
+          <input type="text" name="country" placeholder="Country" [(ngModel)]="country"/>
         </label>
       </section>
 
       <section class="col col-3">
         <label class="input">
-          <input type="text" name="city" placeholder="City" ngModel>
+          <input type="text" name="city" placeholder="City" [(ngModel)]="city"/>
         </label>
       </section>
     </div>
 
     <section>
       <label for="address" class="input">
-        <input type="text" name="image" id="address2" placeholder="Image Url" ngModel>
+        <input type="file" ng2FileSelect [uploader]="uploader">
+        <!--<input type="text" name="image" placeholder="image" style="display:none;" [(ngModel)]="image"/>-->
       </label>
     </section>
 

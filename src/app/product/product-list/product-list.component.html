@@ -26,6 +26,12 @@
                     <mfDefaultSorter by="expire">Expiry Date</mfDefaultSorter>
                   </th>
                   <th>
+                    <mfDefaultSorter by="taps">Taps</mfDefaultSorter>
+                  </th>
+                  <th>
+                    <mfDefaultSorter by="sold">Sold</mfDefaultSorter>
+                  </th>
+                  <th>
                     <mfDefaultSorter>Action</mfDefaultSorter>
                   </th>
                 </tr>
@@ -34,7 +40,7 @@
                 <tr *ngFor="let item of mf.data">
                   <td>{{item.batchId}}</td>
                   <td>{{item.name}}</td>
-                  <td *ngFor="let metadata of item.metadata | showSelected: ['manufacture', 'expire']">{{metadata.value}}</td>
+                  <td *ngFor="let metadata of item.metadata | showSelected: ['manufacture', 'expire', 'tap', 'sold']">{{metadata.value}}</td>
                   <td>
                     <div class="btn-group dropdown" dropdown>
                       <a class="btn btn-primary btn-xs" (click)="goToView(item)">Action</a>

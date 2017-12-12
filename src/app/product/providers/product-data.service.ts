@@ -11,6 +11,8 @@ import { Product } from "../interfaces/product";
 export class ProductDataService {
   private productUploadUrl = environment.api + "upload";
   private productListUrl = environment.api + "products";
+  public productImage = environment.api + "uploadImage";
+
   public selectedProduct: Product;
   constructor(private http: Http) { }
 
