@@ -4,7 +4,7 @@ import { FileUploader } from 'ng2-file-upload';
 import { FileUtil } from './file.util';
 import { ProductDataService } from "../providers/product-data.service";
 import { ActivatedRoute, Router } from '@angular/router';
-import { environment } from '../environments.environment;'
+import { environment } from '../environments.environment';
 
 @Component({
   selector: 'app-product-form',

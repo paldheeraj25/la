@@ -1,5 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 import { ProductComponent } from "./product.component";
+import { JewelComponent } from "./jewel/jewel.component";
+import { JewelListComponent } from './jewel-list/jewel-list.component';
 import { ProductListComponent } from "./product-list/product-list.component";
 import { ModuleWithProviders } from "@angular/core";
 
@@ -16,6 +18,27 @@ export const productRoutes: Routes = [
     component: ProductListComponent,
     data: {
       pageTitle: 'Product List'
+    }
+  },
+  {
+    path: 'jewel/list',
+    component: JewelListComponent,
+    data: {
+      pageTitle: 'Jewel list'
+    }
+  },
+  {
+    path: 'jewel/create',
+    component: JewelComponent,
+    data: {
+      pageTitle: 'Jewel create'
+    }
+  },
+  {
+    path: 'jewel/:id',
+    component: JewelComponent,
+    data: {
+      pageTitle: 'Jewel create'
     }
   }
 ];

@@ -16,6 +16,7 @@ import { AppState, InternalStateType } from './app.service';
 import { AuthService } from "./providers/auth/auth.service";
 import { FileUtil } from "./product/product-form/file.util";
 import { ProductDataService } from "./product/providers/product-data.service";
+import { JewelDataService } from "./product/providers/jewel-data.service";
 import { AdvertisementDataService } from "./advertisement/providers/advertisement-data.service";
 import { UserDataService } from './user/provider/user-data.service';
 
@@ -29,6 +30,7 @@ const APP_PROVIDERS = [
   AppState,
   AuthService,
   ProductDataService,
+  JewelDataService,
   FileUtil,
   AdvertisementDataService,
   UserDataService

@@ -10,6 +10,8 @@ import { ProductFormComponent } from './product-form/product-form.component';
 import { ProductListComponent } from './product-list/product-list.component'
 import { SmartadminDatatableModule } from "../shared/ui/datatable/smartadmin-datatable.module";
 import { ShowSelectedPipe } from "../pipes/show-selected.pipe";
+import { JewelComponent } from './jewel/jewel.component';
+import { JewelListComponent } from './jewel-list/jewel-list.component';
 
 @NgModule({
   imports: [
@@ -21,6 +23,6 @@ import { ShowSelectedPipe } from "../pipes/show-selected.pipe";
     DataTableModule,
     FileUploadModule
   ],
-  declarations: [ProductComponent, ProductFormComponent, ProductListComponent, ShowSelectedPipe]
+  declarations: [ProductComponent, ProductFormComponent, ProductListComponent, ShowSelectedPipe, JewelComponent, JewelListComponent]
 })
 export class ProductModule { }
