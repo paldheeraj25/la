@@ -4,7 +4,7 @@ import { Http } from '@angular/http';
 import { ProductDataService } from '../providers/product-data.service';
 import { Product } from "../interfaces/product";
 import { ShowSelectedPipe } from '../../../pipes/show-selected.pipe';
-import { Observable } from "rxjs";
+import { Observable } from "rxjs/observable";
 
 @Component({
   selector: 'app-product-list',

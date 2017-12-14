@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { environment } from '../../../environments/environment';
+import { Observable } from 'rxjs/observable';
 import 'rxjs/add/operator/map';
 
 import { Jewel } from "../interfaces/jewel";
@@ -29,6 +30,12 @@ export class JewelDataService {
 
   updateJewel(jewel: Jewel) {
     return this.http.put(this.jewel, jewel).map(res => {
+      return res.json();
+    });
+  }
+
+  getJewels(): Observable<Array<Jewel>> {
+    return this.http.get(this.jewel).map(res => {
       return res.json();
     });
   }

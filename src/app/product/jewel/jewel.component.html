@@ -1,9 +1,9 @@
-<!--<div class="show-loader" *ngIf="showLoader">
+<div class="show-loader" *ngIf="showLoader">
   <div>
     <i class="fa fa-5x fa-circle-o-notch fa-spin"></i>
     <h3> Product upload in progress ...</h3>
   </div>
-</div>-->
+</div>
 <form id="checkout-form" class="smart-form" #productForm="ngForm" (ngSubmit)="editState ? updateJewel() : uploader.queue[0].upload()"
   *ngIf="!showLoader" enctype="multipart/form-data">
   <fieldset>

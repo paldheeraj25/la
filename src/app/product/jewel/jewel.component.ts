@@ -38,6 +38,7 @@ export class JewelComponent implements OnInit {
 
     this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+      this.showLoader = true;
       var responsePath = JSON.parse(response);
       this.jewel.image = responsePath.path;
       if (this.editState) {
@@ -45,28 +46,26 @@ export class JewelComponent implements OnInit {
       } else {
         //api to save jewel data and when we fetch from back end remove image and put data in the interface to populate form
         this.jewelDataService.saveJewel(this.jewel).subscribe(res => {
-          console.log(res);
-          //return to list state
+          this.showLoader = false;
+          this.router.navigate(['product/jewel/list']);
         });
       }
     };
   }
 
   updateJewel() {
-    console.log(this.uploader);
     if (this.uploader.queue.length > 0) {
-      console.log('with image change');
+      this.showLoader = true;
       this.uploader.queue[0].upload();
     } else {
-      console.log('without image change');
       this.JewelUpdateRequest();
     }
   }
 
   JewelUpdateRequest() {
     this.jewelDataService.updateJewel(this.jewel).subscribe(res => {
-      console.log(res);
-      //stay on the same state
+      this.showLoader = false;
+      this.router.navigate(['product/jewel/' + this.jewel.code]);
     });
   }
 
