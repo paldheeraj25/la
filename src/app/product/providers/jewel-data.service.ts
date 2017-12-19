@@ -40,4 +40,7 @@ export class JewelDataService {
     });
   }
 
+  updateTap() {
+
+  }
 }

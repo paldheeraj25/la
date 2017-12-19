@@ -7,31 +7,25 @@
       <article class="col-sm-12 col-md-12 col-lg-12">
         <sa-widget [editbutton]="false" [custombutton]="false">
           <div class="widget-body">
-            <form id="checkout-form" class="smart-form" #advertisementForm="ngForm" (ngSubmit)="advertisementBroadcast(advertisementForm.value)">
+            <form id="checkout-form" class="smart-form" #advertisementForm="ngForm" (ngSubmit)="uploader.queue[0].upload()" enctype="multipart/form-data">
               <fieldset>
                 <div class="row">
                   <section class="col col-6">
                     <label class="input"> <i class="icon-prepend fa fa-cubes"></i>
-                      <input type="text" #nameRef="ngModel" name="name" placeholder="Product name" ngModel>
+                      <input type="text" #nameRef="ngModel" name="title" placeholder="Advertisement title" [(ngModel)]="ad.name">
                     </label>
                   </section>
                   <section class="col col-6">
                     <label class="input"> <i class="icon-prepend fa fa-cubes"></i>
-                      <input type="text" #batchRef="ngModel" name="batchId" placeholder="Product Batch" ngModel>
+                      <input type="text" #batchRef="ngModel" name="adDescription" placeholder="Advertisement description" [(ngModel)]="ad.description">
                     </label>
                   </section>
                 </div>
               </fieldset>
               <fieldset>
                 <section>
-                  <label for="address" class="input">
-                    <input type="text" name="addUrl" id="addUrl" placeholder="Advertisement Link" ngModel>
-                  </label>
-                </section>
-                <section>
-                  <label class="label">Advertisement Banner</label>
-                  <input type="file" #fileImportInput name="File Upload" id="txtFileUpload" class="btn btn-primary" (change)="fileChangeListener($event)"
-                    accept=".txt" />
+                  <label for="address" class="input">Advertisement Banner</label>
+                  <input type="file" ng2FileSelect [uploader]="uploader">
                 </section>
               </fieldset>
               <footer>
