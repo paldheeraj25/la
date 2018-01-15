@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Http } from '@angular/http';
 import { ProductDataService } from '../providers/product-data.service';
-import { Product } from "../interfaces/product";
+import { Product } from '../interfaces/product';
 import { ShowSelectedPipe } from '../../../pipes/show-selected.pipe';
-import { Observable } from "rxjs/observable";
+import { Observable } from 'rxjs/Rx';
 
 @Component({
   selector: 'app-product-list',
@@ -14,10 +14,10 @@ import { Observable } from "rxjs/observable";
 export class ProductListComponent implements OnInit {
 
   public data;
-  public filterQuery = "";
+  public filterQuery = '';
   public rowsOnPage = 10;
-  public sortBy = "email";
-  public sortOrder = "asc";
+  public sortBy = 'email';
+  public sortOrder = 'asc';
   public products: Observable<Product[]>;
 
 

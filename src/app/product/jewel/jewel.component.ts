@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { FileUploader } from 'ng2-file-upload';
-import { JewelDataService } from "../providers/jewel-data.service";
+import { JewelDataService } from '../providers/jewel-data.service';
 import { environment } from '../../environments.environment;'
 
 import { Jewel, IJewel } from '../interfaces/jewel';
@@ -17,7 +17,7 @@ export class JewelComponent implements OnInit {
   @ViewChild('productForm') productForm: NgForm;
 
   fileImportInput: any;
-  public showLoader: boolean = false;
+  public showLoader: Boolean = false;
   public uploader: FileUploader = new FileUploader({ url: this.jewelDataService.imageStorage });
   public jewel: Jewel;
   public editState: Boolean;
@@ -26,7 +26,7 @@ export class JewelComponent implements OnInit {
 
   ngOnInit() {
     this.jewel = new IJewel('', '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0);
-    //Todo: Need to keep error handeling
+    // Todo: Need to keep error handeling
     if (this.activatedRoute.snapshot.params.id) {
       this.editState = true;
       this.jewelDataService.getJewelByCodeId(this.activatedRoute.snapshot.params.id).subscribe(res => {
@@ -39,12 +39,12 @@ export class JewelComponent implements OnInit {
     this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
       this.showLoader = true;
-      var responsePath = JSON.parse(response);
+      let responsePath = JSON.parse(response);
       this.jewel.image = responsePath.path;
       if (this.editState) {
         this.JewelUpdateRequest();
       } else {
-        //api to save jewel data and when we fetch from back end remove image and put data in the interface to populate form
+        // api to save jewel data and when we fetch from back end remove image and put data in the interface to populate form
         this.jewelDataService.saveJewel(this.jewel).subscribe(res => {
           this.showLoader = false;
           this.router.navigate(['product/jewel/list']);

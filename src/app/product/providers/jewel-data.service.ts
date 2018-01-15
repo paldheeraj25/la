@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { environment } from '../../../environments/environment';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
-import { Jewel } from "../interfaces/jewel";
+import { Jewel } from '../interfaces/jewel';
 
 @Injectable()
 export class JewelDataService {
 
-  private jewelSaveUrl = environment.api + "jewel";
-  public imageStorage = environment.api + "uploadImage";
-  public jewel = environment.api + "jewel";
-  public getJewel = environment.api + "jewel/";
+  private jewelSaveUrl = environment.api + 'jewel'
+  public imageStorage = environment.api + 'uploadImage';
+  public jewel = environment.api + 'jewel';
+  public getJewel = environment.api + 'jewel/';
 
   constructor(private http: Http) { }
 
