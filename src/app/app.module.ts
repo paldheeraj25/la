@@ -19,6 +19,7 @@ import { ProductDataService } from "./product/providers/product-data.service";
 import { JewelDataService } from "./product/providers/jewel-data.service";
 import { AdvertisementDataService } from "./advertisement/providers/advertisement-data.service";
 import { UserDataService } from './user/provider/user-data.service';
+import { APIService } from './shared/api.service';
 
 // Core providers
 import { CoreModule } from "./core/core.module";
@@ -33,7 +34,8 @@ const APP_PROVIDERS = [
   JewelDataService,
   FileUtil,
   AdvertisementDataService,
-  UserDataService
+  UserDataService,
+  APIService
 ];
 
 type StoreType = {
