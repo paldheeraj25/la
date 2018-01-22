@@ -35,7 +35,11 @@ export class JewelDataService {
   }
 
   getJewels(): Observable<Array<Jewel>> {
-    return this.http.get(this.jewel).map(res => {
+    let headers:any = {};
+    headers.Authorization = localStorage.getItem('Authorization');
+    return this.http.get(this.jewel, {
+      headers: headers
+    }).map(res => {
       return res.json();
     });
   }
