@@ -25,7 +25,6 @@ export class UserDataService {
     return this.apiService.getAll(this.listUrl).map( res => {
       return res;
     });
-    // return this.http.get(this.listUrl).map(res => res.json());
   }
 
   delete(user: any) {
