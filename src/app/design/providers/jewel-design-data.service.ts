@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { environment } from '../../../environments/environment';
 import 'rxjs/add/operator/map';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs';
 import { design } from "../model/design.model";
 import 'rxjs/add/operator/take';
 

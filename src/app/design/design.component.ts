@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { has, keys, pick } from 'lodash';
-import { FadeInTop } from "../shared/animations/fade-in-top.decorator";
-import { Product } from "../product/interfaces/product";
-import { ProductDataService } from "../product/providers/product-data.service";
+import { FadeInTop } from '../shared/animations/fade-in-top.decorator';
+import { Product } from '../product/interfaces/product';
+import { ProductDataService } from '../product/providers/product-data.service';
 import { JewelDesignDataService } from './providers/jewel-design-data.service';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs';
 import { design } from './model/design';
 
 @FadeInTop()
