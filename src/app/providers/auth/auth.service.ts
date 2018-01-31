@@ -18,4 +18,9 @@ export class AuthService {
   logout() {
     return this.http.get(environment.api + 'logout').map(res => res.json()).take(1);
   }
+
+  public isAuthenticated(): boolean {
+    const token = localStorage.getItem('key');
+    return (token !== null);
+  }
 }

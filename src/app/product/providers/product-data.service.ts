@@ -1,6 +1,8 @@
+import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { environment } from '../../../environments/environment';
+import { APIService } from './../../shared/api.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
 
@@ -14,15 +16,18 @@ export class ProductDataService {
   public productImage = environment.api + "uploadImage";
 
   public selectedProduct: Product;
-  constructor(private http: Http) { }
+  constructor(private http: Http, private apiService: APIService) { }
 
   uploadProduct(productList: any) {
-    console.log(productList);
-    return this.http.post(this.productUploadUrl, productList).map(res => res.json()).take(1);
+    return this.apiService.createOne(this.productUploadUrl, productList).map( res => {
+      res.take(1);
+    });
   }
 
-  listProducts() {
-    return this.http.get(this.productListUrl).map(res => res.json());
+  listProducts(): Observable<any> {
+    return this.apiService.getAll(this.productListUrl).map( res => {
+      return res;
+    });
   }
 
 }

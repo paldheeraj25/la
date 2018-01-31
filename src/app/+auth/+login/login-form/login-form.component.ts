@@ -24,7 +24,8 @@ export class LoginFormComponent implements OnInit {
     this.authService.login(user).subscribe(result => {
       this.error = false;
       localStorage.setItem('key', result.token);
-      this.router.navigate(['/dashboard']);
+      localStorage.setItem('Authorization', "Bearer " + result.token);
+      this.router.navigate(['/dashboard/analytics']);
     }, error => {
       this.error = true;
     });

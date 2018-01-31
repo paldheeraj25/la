@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
 import { Jewel } from '../interfaces/jewel';
+import { APIService } from './../../shared/api.service';
 
 @Injectable()
 export class JewelDataService {
@@ -14,29 +15,29 @@ export class JewelDataService {
   public jewel = environment.api + 'jewel';
   public getJewel = environment.api + 'jewel/';
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private apiService: APIService) { }
 
   saveJewel(jewel: Jewel) {
-    return this.http.post(this.jewelSaveUrl, jewel).map(res => {
-      return res.json();
+    return this.apiService.createOne(this.jewelSaveUrl, jewel).map(res => {
+      return res;
     });
   }
 
   getJewelByCodeId(id: string) {
-    return this.http.get(this.getJewel + id).map(res => {
-      return res.json();
+    return this.apiService.getOne(this.getJewel, id).map(res => {
+      return res;
     });
   }
 
   updateJewel(jewel: Jewel) {
-    return this.http.put(this.jewel, jewel).map(res => {
-      return res.json();
+    return this.apiService.updateOne(this.jewelSaveUrl, jewel).map(res => {
+      return res;
     });
   }
 
   getJewels(): Observable<Array<Jewel>> {
-    return this.http.get(this.jewel).map(res => {
-      return res.json();
+    return this.apiService.getAll(this.jewel).map(res => {
+      return res;
     });
   }
 

@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { has, keys, pick } from 'lodash';
-import { FadeInTop } from "../shared/animations/fade-in-top.decorator";
-import { Product } from "../product/interfaces/product";
-import { ProductDataService } from "../product/providers/product-data.service";
+import { FadeInTop } from '../shared/animations/fade-in-top.decorator';
+import { Product } from '../product/interfaces/product';
+import { ProductDataService } from '../product/providers/product-data.service';
+import { JewelDesignDataService } from './providers/jewel-design-data.service';
+import { Observable } from 'rxjs';
+import { design } from './model/design';
 
 @FadeInTop()
 @Component({
@@ -15,12 +18,19 @@ import { ProductDataService } from "../product/providers/product-data.service";
 export class DesignComponent implements OnInit {
 
   private product: Product;
+
+  public designList: Observable<Array<any>>;
+
+
   searchWidgets: Array<String> = [];
   availableWidgets: Array<Widget> = [];
   selectedWidgets: Array<Widget> = [];
   public oldValue: any;
 
   private routeState = { design: 'Design', edit: 'Edit' };
+
+  public widgets = "test"; // from service call
+
   private widgetCollection = [
     { name: "heading", container: "Header", id: 0 },
     { name: "image", container: "Image", id: 1 },
@@ -46,27 +56,32 @@ export class DesignComponent implements OnInit {
   showImage = false;
 
   ngOnInit() {
+
+    // Collection
+    this.designList = this.jewelDesignDataService.getDesigns();
+
     if (this.route.snapshot.data['pageTitle'] === this.routeState.design) {
       for (let widget of this.widgetCollection) {
-        this.availableWidgets.push(new Widget(widget.name, widget.container, widget.id));
+        this.availableWidgets.push(new Widget(widget.name, widget.container, widget.id, true));
       }
     } else {
       for (let widget of this.widgetCollection) {
         if (has(this.productDataService.selectedProduct, widget.name) && this.productDataService.selectedProduct[widget.name].show) {
-          this.selectedWidgets.push(new Widget(widget.name, widget.container, widget.id));
+          this.selectedWidgets.push(new Widget(widget.name, widget.container, widget.id, true));
         } else {
-          this.availableWidgets.push(new Widget(widget.name, widget.container, widget.id));
+          this.availableWidgets.push(new Widget(widget.name, widget.container, widget.id, false));
         }
       }
     }
   }
 
-  constructor(private route: ActivatedRoute, private productDataService: ProductDataService) {
+  constructor(private route: ActivatedRoute, private productDataService: ProductDataService, private jewelDesignDataService: JewelDesignDataService) {
   }
 
   pushWidget($event: any, index: number) {
     let newWidget: Widget = $event.dragData;
-    this.selectedWidgets.push(new Widget(newWidget.name, newWidget.description, newWidget.index));
+    newWidget.visibility = true;
+    this.selectedWidgets.push(new Widget(newWidget.name, newWidget.description, newWidget.index, newWidget.visibility));
     this.selectedWidgets.sort((a: Widget, b: Widget) => {
       return a.index - b.index;
     });
@@ -75,7 +90,8 @@ export class DesignComponent implements OnInit {
 
   pullWidget(index: number) {
     let newWidget: Widget = this.selectedWidgets[index];
-    this.availableWidgets.push(new Widget(newWidget.name, newWidget.description, newWidget.index));
+    newWidget.visibility = false;
+    this.availableWidgets.push(new Widget(newWidget.name, newWidget.description, newWidget.index, newWidget.visibility));
     this.availableWidgets.sort((a: Widget, b: Widget) => {
       return a.index - b.index;
     });
@@ -105,24 +121,27 @@ export class DesignComponent implements OnInit {
   };
 
   submitDesign() {
-    // for (let widget of this.selectedWidgets) {
-    //   console.log(widget.name)
-    //   console.log(has(this.productDataService.selectedProduct, widget.name));
-    //   this.productDataService.selectedProduct[widget.name].show = has(this.selectedWidgets.selectedProduct, widget.name) ? true : false;
-    //   // if(has(this.productDataService.selectedProduct, widget.name)){
-    //   //   this.productDataService.selectedProduct[widget.name].show = true;
-    //   // } else{
-    //   //   this.productDataService.selectedProduct[widget.name].show = false;
-    //   // }
-    // }
+    for (let widget of this.selectedWidgets) {
+      console.log(widget.name);
+      // widget.visible = false;
+
+
+
+      // this.productDataService.selectedProduct[widget.name].show = has(this.selectedWidgets.selectedProduct, widget.name) ? true : false;
+      // if(has(this.productDataService.selectedProduct, widget.name)){
+      //   this.productDataService.selectedProduct[widget.name].show = true;
+      // } else{
+      //   this.productDataService.selectedProduct[widget.name].show = false;
+      // }
+    }
     // for (let widget of this.productDataService.selectedProduct) {
     //     this.availableWidgets.push(new Widget(widget.name, widget.container, widget.id));
     //   }
-    console.log(this.productDataService.selectedProduct);
+    // console.log(this.productDataService.selectedProduct);
   }
 }
 class Widget {
-  constructor(public name: string, public description: string, public index: number) { }
+  constructor(public name: string, public description: string, public index: number, public visibility: boolean) { }
 }
 
 class DesignModel {
