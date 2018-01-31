@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { NotificationService } from "../../utils/notification.service";
+import { AuthService } from "../../../providers/auth/auth.service";
 
 declare var $: any;
 
@@ -16,11 +17,15 @@ declare var $: any;
 })
 export class LogoutComponent implements OnInit {
 
-  constructor(private router: Router, private notificationService: NotificationService) { };
+  constructor(private router: Router, private notificationService: NotificationService, private authService: AuthService) { };
 
   logout() {
-    window.localStorage.clear();
-    this.router.navigate(['/auth/login']);
+    this.authService.logout().subscribe(result => {
+      window.localStorage.clear();
+      this.router.navigate(['/auth/login']);
+    }, error => {
+      console.log("Error happened");
+    });
   }
 
   ngOnInit() {

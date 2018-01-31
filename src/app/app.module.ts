@@ -24,12 +24,14 @@ import { APIService } from './shared/api.service';
 // Core providers
 import { CoreModule } from "./core/core.module";
 import { SmartadminLayoutModule } from "./shared/layout/layout.module";
+import { AuthGaurd } from './providers/auth/auth.gaurd';
 
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
   AppState,
   AuthService,
+  AuthGaurd,
   ProductDataService,
   JewelDataService,
   FileUtil,

@@ -25,7 +25,7 @@ export class LoginFormComponent implements OnInit {
       this.error = false;
       localStorage.setItem('key', result.token);
       localStorage.setItem('Authorization', "Bearer " + result.token);
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/dashboard/analytics']);
     }, error => {
       this.error = true;
     });
