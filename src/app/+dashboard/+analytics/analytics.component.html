@@ -41,8 +41,96 @@
   </div>
   <br>
   <div class="row">
-    <article class="col-sm-12 col-md-12 col-lg-12">
+    <article class="col-sm-6 col-md-6 col-lg-6">
+      <h2 class="page-title txt-color-blueDark">Top most viewed jewels</h2>
+      <table saSparklineContainer class="table table-bordered table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Jewel</th>
+            <th># of Views</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of filteredBuysData">
+            <td><a (click)="(null)">{{item.jewel}}</a></td>
+            <td>{{item.views}}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="5">
+              <ul class="pagination pagination-xs no-margin">
+                <li class="prev">
+                  <a (click)="buysTablePagination('prev')">Previous</a>
+                </li>
+                <li class="active">
+                  <a (click)="buysTablePagination(1)">1</a>
+                </li>
+                <li>
+                  <a (click)="buysTablePagination(2)">2</a>
+                </li>
+                <li>
+                  <a (click)="buysTablePagination(3)">3</a>
+                </li>
+                <li>
+                  <a (click)="buysTablePagination(4)">4</a>
+                </li>
+                <li class="next">
+                  <a (click)="buysTablePagination('next')">Next</a>
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </article>
+
+     <!-- <article class="col-sm-12 col-md-12 col-lg-12">
       <bird-eye-widget></bird-eye-widget>
+    </article> -->
+
+    <article class="col-sm-6 col-md-6 col-lg-6">
+      <h2 class="page-title txt-color-blueDark">Top most sold jewels</h2>
+      <table saSparklineContainer class="table table-bordered table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Jewel</th>
+            <th># of Sell</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of filteredViewsData">
+            <td><a (click)="(null)">{{item.jewel}}</a></td>
+            <td>{{item.views}}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="5">
+              <ul class="pagination pagination-xs no-margin">
+                <li class="prev">
+                  <a (click)="viewsTablePagination('prev')">Previous</a>
+                </li>
+                <li class="active">
+                  <a (click)="viewsTablePagination(1)">1</a>
+                </li>
+                <li>
+                  <a (click)="viewsTablePagination(2)">2</a>
+                </li>
+                <li>
+                  <a (click)="viewsTablePagination(3)">3</a>
+                </li>
+                <li>
+                  <a (click)="viewsTablePagination(4)">4</a>
+                </li>
+                <li class="next">
+                  <a (click)="viewsTablePagination('next')">Next</a>
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
     </article>
   </div>
 
