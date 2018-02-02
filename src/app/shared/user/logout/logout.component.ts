@@ -20,13 +20,13 @@ export class LogoutComponent implements OnInit {
   constructor(private router: Router, private notificationService: NotificationService, private authService: AuthService) { };
 
   logout() {
-    this.authService.logout().subscribe(result => {
+    // this.authService.logout().subscribe(result => {
       window.localStorage.clear();
       this.router.navigate(['/auth/login']);
-    }, error => {
-      this.router.navigate(['/auth/login']);
-      console.log("Error happened");
-    });
+    // }, error => {
+    //   this.router.navigate(['/auth/login']);
+    //   console.log("Error happened");
+    // });
   }
 
   ngOnInit() {
