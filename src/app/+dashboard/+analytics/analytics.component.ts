@@ -18,6 +18,104 @@ export class AnalyticsComponent implements OnInit {
   public form: any;
   public oldValue: any;
   public newValue: any;
+  paginationStart: number = 0;
+
+  viewsData = [
+    {
+      jewel: 'Hand Harness',
+      views: '5,001'
+    },{
+      jewel: 'Maang Tika',
+      views: '4,995'
+    }, {
+      jewel: 'Toe Rings',
+      views: '4,575'
+    }, {
+      jewel: 'Traditional Earrings',
+      views: '4,555'
+    },
+    {
+      jewel: 'Jhumkis',
+      views: '4,110'
+    },{
+      jewel: 'Drop Earrings',
+      views: '4,010'
+    }, {
+      jewel: 'Ear Cuffs',
+      views: '3,975'
+    }, {
+      jewel: 'Bracelet',
+      views: '3,845'
+    },
+    {
+      jewel: 'Exquisite Rings',
+      views: '3,755'
+    },{
+      jewel: 'Chokers & Necklaces',
+      views: '3,023'
+    }, {
+      jewel: 'Foot Harness',
+      views: '2,787'
+    }, {
+      jewel: 'Anklet – Epitome Of Culture',
+      views: '2,655'
+    },
+    {
+      jewel: 'Nose Ring',
+      views: '2,515'
+    },{
+      jewel: 'Graceful Armlet',
+      views: '2,401'
+    }, {
+      jewel: 'Kamarband – Waist Band',
+      views: '2,275'
+    }, {
+      jewel: 'Braid Jewels',
+      views: '2,155'
+    },
+    {
+      jewel: 'Hoop Earrings',
+      views: '1,915'
+    },{
+      jewel: 'Threader Earrings',
+      views: '1,901'
+    }, {
+      jewel: 'Stud Earrings',
+      views: '1,875'
+    }, {
+      jewel: 'Chandelier Earrings',
+      views: '1,755'
+    },
+    {
+      jewel: 'Ear Cuffs',
+      views: '1,715'
+    },{
+      jewel: 'Accesories',
+      views: '1,700'
+    }, {
+      jewel: 'Watch',
+      views: '1,675'
+    }, {
+      jewel: 'Bindi Ring',
+      views: '1,555'
+    }
+  ]
+  filteredViewsData: any = [];
+  filteredBuysData: any = [];
+
+  filterViewsData(index, table){
+    if(table == "views"){
+      this.filteredViewsData = [];
+      for(let i = index; i<index+6; i++){
+        this.filteredViewsData.push(this.viewsData[i]);
+      }
+    }else {
+      this.filteredBuysData = [];
+      for(let i = index; i<index+6; i++){
+        this.filteredBuysData.push(this.viewsData[i]);
+      }
+    }
+  }
 
   //hardcoded
   private yearlyGraph = new Chart({
@@ -69,12 +167,13 @@ export class AnalyticsComponent implements OnInit {
       name: 'Genuine Taps',
       data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
 
-    },
-    {
-      name: 'Tampered/Counterfieted Taps',
-      data: [-39.9, -11.5, -86.4, -99.2, -4.0, -46.0, -35.6, -48.5, -96.4, -94.1, -25.6, -14.4]
-
     }]
+    // {
+    //   name: 'Tampered/Counterfieted Taps',
+    //   data: [-39.9, -11.5, -86.4, -99.2, -4.0, -46.0, -35.6, -48.5, -96.4, -94.1, -25.6, -14.4]
+
+    // }
+  //]
   });
 
   //weekly bar graph
@@ -98,10 +197,12 @@ export class AnalyticsComponent implements OnInit {
     series: [{
       name: 'Genuine',
       data: [5, 3, 4, 7, 2, 8, 6]
-    }, {
-      name: 'Tampered/Counterfieted',
-      data: [-1, -2, -3, -2, -7, -5, -8]
-    }]
+    }
+    // , {
+    //   name: 'Tampered/Counterfieted',
+    //   data: [-1, -2, -3, -2, -7, -5, -8]
+    // }
+  ]
   });
 
   //hardcoded piechart
@@ -259,6 +360,8 @@ export class AnalyticsComponent implements OnInit {
   constructor() {
     this.chart = cloneDeep(this.yearlyGraph);
     this.segmentedPieChart = cloneDeep(this.segmentedPie);
+    this.filterViewsData(0, 'views');
+    this.filterViewsData(0, 'buys');
   }
 
 
@@ -278,4 +381,31 @@ export class AnalyticsComponent implements OnInit {
       this.chart = cloneDeep(this.yearlyGraph);
     }
   }
+
+  viewsTablePagination(index) {
+    if(index === 'prev'){
+      this.paginationStart = this.paginationStart - 6;
+      this.filterViewsData(this.paginationStart, 'views');
+    } else if(index === 'next') {
+      this.paginationStart = this.paginationStart + 6;
+      this.filterViewsData(this.paginationStart, 'views');
+    } else {
+      this.paginationStart = (index-1) * 6;
+      this.filterViewsData(this.paginationStart, 'views');
+    }
+  }
+
+  buysTablePagination(index) {
+    if(index === 'prev'){
+      this.paginationStart = this.paginationStart - 6;
+      this.filterViewsData(this.paginationStart, 'buys');
+    } else if(index === 'next') {
+      this.paginationStart = this.paginationStart + 6;
+      this.filterViewsData(this.paginationStart, 'buys');
+    } else {
+      this.paginationStart = (index-1) * 6;
+      this.filterViewsData(this.paginationStart, 'buys');
+    }
+  }
+
 }

@@ -2,3 +2,7 @@
 
 /* #GOOGLE FONT */
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700");
+
+.table.table-bordered.table-striped.table-hover {
+  font-size: 125%;
+}
