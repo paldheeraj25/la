@@ -10,7 +10,7 @@ export const routes: Routes = [
     component: MainLayoutComponent,
     children: [
       {
-        path: '', redirectTo: 'auth/login', pathMatch: 'full'
+        path: '', redirectTo: 'dashboard/analytics', pathMatch: 'full'
       },
       // {
       //   path: 'home',
@@ -20,29 +20,35 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         canActivate: [AuthGaurd],
+        canActivateChild: [AuthGaurd],
         loadChildren: 'app/+dashboard/dashboard.module#DashboardModule',
         data: { pageTitle: 'Dashboard' }
       },
       {
         path: 'product',
+        canActivate: [AuthGaurd],
+        canActivateChild: [AuthGaurd],
         loadChildren: 'app/product/product.module#ProductModule',
         data: { pageTitle: 'Product' }
       },
       {
         path: 'design',
         canActivate: [AuthGaurd],
+        canActivateChild: [AuthGaurd],
         loadChildren: 'app/design/design.module#DesignModule',
         data: { pageTitle: 'Design' }
       },
       {
         path: 'advertisement',
         canActivate: [AuthGaurd],
+        canActivateChild: [AuthGaurd],
         loadChildren: 'app/advertisement/advertisement.module#AdvertisementModule',
         data: { pageTitle: 'Advertisement' }
       },
       {
         path: 'user',
         canActivate: [AuthGaurd],
+        canActivateChild: [AuthGaurd],
         loadChildren: 'app/user/user.module#UserModule',
         data: { pageTitle: 'User' }
       }
