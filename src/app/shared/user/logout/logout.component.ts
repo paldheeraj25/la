@@ -24,6 +24,7 @@ export class LogoutComponent implements OnInit {
       window.localStorage.clear();
       this.router.navigate(['/auth/login']);
     }, error => {
+      this.router.navigate(['/auth/login']);
       console.log("Error happened");
     });
   }
