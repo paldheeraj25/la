@@ -25,7 +25,7 @@ export class ProductDataService {
   }
 
   listProducts(): Observable<any> {
-    return this.apiService.getAll(this.productListUrl).map(res => {
+    return this.apiService.getAll(this.productListUrl, {}).map(res => {
       return res;
     });
   }

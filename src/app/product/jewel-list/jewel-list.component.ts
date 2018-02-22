@@ -12,14 +12,32 @@ import { Observable } from 'rxjs/Rx';
 export class JewelListComponent implements OnInit {
 
   public jewelList: Observable<Array<Jewel>>;
+  totalItems = 0;
+  currentPage = 0;
+  summary: any = {};
   constructor(private router: Router, public jewelDataService: JewelDataService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.jewelList = this.jewelDataService.getJewels(0, 2);
+    this.jewelDataService.getSummary().subscribe(resp => {
+      this.summary = resp;
+      this.totalItems = this.summary.count;
+    })
+    this.jewelList = this.jewelDataService.getJewels(0, 20);
   }
 
   goToView(jewel: Jewel) {
     this.router.navigate(['product/jewel/' + jewel.code]);
+  }
+
+  setPage(pageNo: number): void {
+    this.currentPage = pageNo;
+  }
+
+  pageChanged(event: any): void {
+    const currentPage = event.page;
+    const limit = currentPage * 20;
+    const offset = (limit - 20) === 0 ? (limit - 20) : (limit - 20) + 1;
+    this.jewelList = this.jewelDataService.getJewels(offset, limit);
   }
 
 }

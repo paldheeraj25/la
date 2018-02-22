@@ -22,7 +22,7 @@ export class UserDataService {
   }
 
   list(): Observable<any> {
-    return this.apiService.getAll(this.listUrl).map( res => {
+    return this.apiService.getAll(this.listUrl, {}).map(res => {
       return res;
     });
   }
