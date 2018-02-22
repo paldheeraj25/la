@@ -15,7 +15,7 @@ export class JewelListComponent implements OnInit {
   constructor(private router: Router, public jewelDataService: JewelDataService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.jewelList = this.jewelDataService.getJewels();
+    this.jewelList = this.jewelDataService.getJewels(0, 2);
   }
 
   goToView(jewel: Jewel) {

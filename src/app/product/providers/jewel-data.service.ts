@@ -35,8 +35,9 @@ export class JewelDataService {
     });
   }
 
-  getJewels(): Observable<Array<Jewel>> {
-    return this.apiService.getAll(this.jewel).map(res => {
+  getJewels(offset, limit): Observable<Array<Jewel>> {
+    const params = { offset, limit };
+    return this.apiService.getAll(this.jewel, params).map(res => {
       return res;
     });
   }

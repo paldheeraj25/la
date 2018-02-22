@@ -8,14 +8,15 @@ import 'rxjs/add/operator/map';
 export class APIService {
 
   private headers: any = {};
-  constructor(private http: Http) { 
+  constructor(private http: Http) {
     this.headers.Authorization = localStorage.getItem('Authorization');
   }
-  
 
-  getAll(url: string): Observable<any> {
+
+  getAll(url: string, params: any): Observable<any> {
     return this.http.get(url, {
-      headers: this.headers
+      headers: this.headers,
+      params: params
     }).map(res => {
       return res.json();
     });

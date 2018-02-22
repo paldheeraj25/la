@@ -19,13 +19,13 @@ export class ProductDataService {
   constructor(private http: Http, private apiService: APIService) { }
 
   uploadProduct(productList: any) {
-    return this.apiService.createOne(this.productUploadUrl, productList).map( res => {
+    return this.apiService.createOne(this.productUploadUrl, productList).map(res => {
       res.take(1);
     });
   }
 
   listProducts(): Observable<any> {
-    return this.apiService.getAll(this.productListUrl).map( res => {
+    return this.apiService.getAll(this.productListUrl).map(res => {
       return res;
     });
   }
