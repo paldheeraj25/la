@@ -14,6 +14,7 @@ export class JewelDataService {
   public imageStorage = environment.api + 'uploadImage';
   public jewel = environment.api + 'jewel';
   public getJewel = environment.api + 'jewel/';
+  public summary = environment.api + 'jewel/summary';
 
   constructor(private http: Http, private apiService: APIService) { }
 
@@ -38,6 +39,12 @@ export class JewelDataService {
   getJewels(offset, limit): Observable<Array<Jewel>> {
     const params = { offset, limit };
     return this.apiService.getAll(this.jewel, params).map(res => {
+      return res;
+    });
+  }
+
+  getSummary(): Observable<any> {
+    return this.apiService.getSummary(this.summary).map(res => {
       return res;
     });
   }

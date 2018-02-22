@@ -12,6 +12,14 @@ export class APIService {
     this.headers.Authorization = localStorage.getItem('Authorization');
   }
 
+  getSummary(url: string): Observable<any> {
+    return this.http.get(url, {
+      headers: this.headers
+    }).map(res => {
+      return res.json();
+    });
+  }
+
 
   getAll(url: string, params: any): Observable<any> {
     return this.http.get(url, {

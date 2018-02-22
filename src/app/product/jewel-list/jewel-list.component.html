@@ -5,12 +5,15 @@
   <div class="row">
     <article class="col-sm-12">
       <sa-widget [editbutton]="false" color="darken">
-        <header><span class="widget-icon"> <i class="fa fa-table"></i> </span>
+        <header>
+          <span class="widget-icon">
+            <i class="fa fa-table"></i>
+          </span>
           <h2>Jewels</h2>
         </header>
         <div>
           <div class="widget-body no-padding">
-            <table class="table table-striped" [mfData]="jewelList | async" #mf="mfDataTable" [mfRowsOnPage]="10">
+            <table class="table table-striped" [mfData]="jewelList | async" #mf="mfDataTable" [mfRowsOnPage]="20">
               <thead>
                 <tr>
                   <th>
@@ -39,7 +42,9 @@
                   <td>
                     <div class="btn-group dropdown" dropdown>
                       <a class="btn btn-primary btn-xs" (click)="goToView(jewel)">Action</a>
-                      <a class="btn btn-primary btn-xs dropdown-toggle" dropdownToggle><span class="caret"></span></a>
+                      <a class="btn btn-primary btn-xs dropdown-toggle" dropdownToggle>
+                        <span class="caret"></span>
+                      </a>
                       <ul *dropdownMenu class="dropdown-menu">
                         <li>
                           <a (click)="goToEdit(item)">Edit</a>
@@ -55,7 +60,7 @@
               <tfoot>
                 <tr>
                   <td colspan="4">
-                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                    <pagination [totalItems]="totalItems" [boundaryLinks]="true" [(ngModel)]="currentPage" [itemsPerPage]="20" (pageChanged)="pageChanged($event)"></pagination>
                   </td>
                 </tr>
               </tfoot>
