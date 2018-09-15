@@ -12,17 +12,24 @@ export const routes: Routes = [
       {
         path: '', redirectTo: 'dashboard/analytics', pathMatch: 'full'
       },
-      // {
-      //   path: 'home',
-      //   canActivate: [AuthGaurd],
-      //   loadChildren: 'app/+home/home.module#HomeModule'
-      // },
+      {
+        path: 'home',
+        canActivate: [AuthGaurd],
+        loadChildren: 'app/+home/home.module#HomeModule'
+      },
       {
         path: 'dashboard',
         canActivate: [AuthGaurd],
         canActivateChild: [AuthGaurd],
         loadChildren: 'app/+dashboard/dashboard.module#DashboardModule',
         data: { pageTitle: 'Dashboard' }
+      },
+      {
+        path: 'hire',
+        canActivate: [AuthGaurd],
+        canActivateChild: [AuthGaurd],
+        loadChildren: 'app/hire/hire.module#HireModule',
+        data: { pageTitle: 'Resources' }
       },
       {
         path: 'product',

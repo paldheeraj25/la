@@ -1,18 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { FileUploader } from 'ng2-file-upload';
-import { FileUtil } from './file.util';
-import { ProductDataService } from "../providers/product-data.service";
 import { ActivatedRoute, Router } from '@angular/router';
-// import { environment } from '../environments.environment';
+import { FileUtil } from '../../product/product-form/file.util';
 
 @Component({
-  selector: 'app-product-form',
-  templateUrl: './product-form.component.html',
-  styleUrls: ['./product-form.component.css']
+  selector: 'app-student',
+  templateUrl: './student.component.html',
+  styleUrls: ['./student.component.css']
 })
-
-export class ProductFormComponent implements OnInit {
+export class StudentComponent implements OnInit {
 
   @ViewChild('fileImportInput')
   @ViewChild('productForm') productForm: NgForm;
@@ -22,30 +18,14 @@ export class ProductFormComponent implements OnInit {
   public showLoader: boolean = false;
   files: FileList;
   filestring: string;
-  public productImage: string = this.productDataService.productImage;
 
-  public uploader: FileUploader = new FileUploader({ url: this.productImage });
 
   csvRecords = [];
-  constructor(private _fileUtil: FileUtil, private productDataService: ProductDataService, private router: Router) { }
+  constructor(private _fileUtil: FileUtil, private router: Router) { }
 
   ngOnInit() {
-    this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
-    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
-      var responsePath = JSON.parse(response);
-      this.productForm.value.image = responsePath.path;
-      this.showLoader = true;
-      let productListDetail: { metadata: any, idList: any, productImage: any };
-      productListDetail = { metadata: this.productForm.value, idList: this.idList, productImage: this.filestring };
-      this.productDataService.uploadProduct(productListDetail).subscribe(result => {
-        this.showLoader = false;
-        this.router.navigate(['product/list']);
-      }, error => {
-        this.showLoader = false;
-        return error;
-      });
 
-    };
+
   }
 
   // METHOD CALLED WHEN CSV FILE IS IMPORTED
@@ -91,5 +71,9 @@ export class ProductFormComponent implements OnInit {
     var binaryString = readerEvt.target.result;
     console.log(binaryString);
     this.filestring = btoa(binaryString);  // Converting binary string data. 
+  }
+
+  uploadStudent() {
+
   }
 }

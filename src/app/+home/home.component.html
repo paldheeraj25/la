@@ -4,11 +4,10 @@
   </div>
   <div class="row">
     <div class="col-sm-12">
-      <div class="well">
-
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae corporis dignissimos doloremque eaque
-          eum modi, quia reprehenderit unde voluptatem.</p>
+      <div class="well" [ngSwitch]="role">
+        <app-company *ngSwitchCase="'company'"></app-company>
+        <app-college *ngSwitchCase="'college'"></app-college>
+        <app-student *ngSwitchCase="'student'"></app-student>
       </div>
     </div>
   </div>

@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { FileUploader } from 'ng2-file-upload';
 import { JewelDataService } from '../providers/jewel-data.service';
-import { environment } from '../../environments.environment;'
+// import { environment } from '../../environments.environment;'
 
 import { Jewel, IJewel } from '../interfaces/jewel';
 @Component({

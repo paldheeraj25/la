@@ -1,18 +1,16 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { FileUploader } from 'ng2-file-upload';
 import { FileUtil } from './file.util';
-import { ProductDataService } from "../providers/product-data.service";
 import { ActivatedRoute, Router } from '@angular/router';
-// import { environment } from '../environments.environment';
+import { CollegeService } from '../providers/college.service';
 
 @Component({
-  selector: 'app-product-form',
-  templateUrl: './product-form.component.html',
-  styleUrls: ['./product-form.component.css']
+  selector: 'app-college',
+  templateUrl: './college.component.html',
+  styleUrls: ['./college.component.css']
 })
+export class CollegeComponent implements OnInit {
 
-export class ProductFormComponent implements OnInit {
 
   @ViewChild('fileImportInput')
   @ViewChild('productForm') productForm: NgForm;
@@ -22,30 +20,14 @@ export class ProductFormComponent implements OnInit {
   public showLoader: boolean = false;
   files: FileList;
   filestring: string;
-  public productImage: string = this.productDataService.productImage;
-
-  public uploader: FileUploader = new FileUploader({ url: this.productImage });
+  batchName: string;
+  batchId: string;
 
   csvRecords = [];
-  constructor(private _fileUtil: FileUtil, private productDataService: ProductDataService, private router: Router) { }
+  constructor(private _fileUtil: FileUtil, private router: Router, private collegeService: CollegeService) { }
 
   ngOnInit() {
-    this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
-    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
-      var responsePath = JSON.parse(response);
-      this.productForm.value.image = responsePath.path;
-      this.showLoader = true;
-      let productListDetail: { metadata: any, idList: any, productImage: any };
-      productListDetail = { metadata: this.productForm.value, idList: this.idList, productImage: this.filestring };
-      this.productDataService.uploadProduct(productListDetail).subscribe(result => {
-        this.showLoader = false;
-        this.router.navigate(['product/list']);
-      }, error => {
-        this.showLoader = false;
-        return error;
-      });
-
-    };
+    this.showLoader = true;
   }
 
   // METHOD CALLED WHEN CSV FILE IS IMPORTED
@@ -63,6 +45,8 @@ export class ProductFormComponent implements OnInit {
         let headersRow = this._fileUtil.getHeaderArray(csvRecordsArray);
         this.csvRecords = this._fileUtil.getDataRecordsArrayFromCSVFile(csvRecordsArray, headersRow.length);
         this.idList = btoa(JSON.stringify(this.csvRecords));
+        console.log(this.csvRecords);
+        console.log(this.idList);
       }
 
       reader.onerror = function () {
@@ -92,4 +76,11 @@ export class ProductFormComponent implements OnInit {
     console.log(binaryString);
     this.filestring = btoa(binaryString);  // Converting binary string data. 
   }
+
+  uploadStudent() {
+    this.collegeService.uploadCollegeData(this.idList).subscribe(record => {
+      console.log(record);
+    });
+  }
+
 }

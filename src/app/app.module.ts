@@ -4,6 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { LinkedInSdkModule } from 'angular-linkedin-sdk';
+
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -20,6 +22,7 @@ import { JewelDataService } from "./product/providers/jewel-data.service";
 import { AdvertisementDataService } from "./advertisement/providers/advertisement-data.service";
 import { UserDataService } from './user/provider/user-data.service';
 import { APIService } from './shared/api.service';
+import { RoleBaseService } from './shared/service/role-base.service';
 
 // Core providers
 import { CoreModule } from "./core/core.module";
@@ -37,7 +40,8 @@ const APP_PROVIDERS = [
   FileUtil,
   AdvertisementDataService,
   UserDataService,
-  APIService
+  APIService,
+  RoleBaseService
 ];
 
 type StoreType = {
@@ -59,19 +63,19 @@ type StoreType = {
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
-
     CoreModule,
     SmartadminLayoutModule,
-
-
-
-    routing
+    routing,
+    LinkedInSdkModule
   ],
   exports: [
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     // ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    //LinkedIn SDK variables
+    { provide: 'apiKey', useValue: '81iy3swyl5bnz4' },
+    { provide: 'authorize', useValue: 'true' },
   ]
 })
 export class AppModule {

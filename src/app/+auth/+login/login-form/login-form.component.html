@@ -2,21 +2,23 @@
   <header>
     Sign In
   </header>
-  <fieldset>
+  <fieldset class="sign-in-section">
     <section>
       <label class="label">E-mail</label>
-      <label class="input"> <i class="icon-append fa fa-user"></i>
+      <label class="input">
+        <i class="icon-append fa fa-user"></i>
         <input type="email" name="email" #emailRef="ngModel" required ngModel>
-        <div [hidden] = "emailRef.valid || emailRef.pristine" class="alert alert-danger">
+        <div [hidden]="emailRef.valid || emailRef.pristine" class="alert alert-danger">
           Email is required
         </div>
       </label>
     </section>
     <section>
       <label class="label">Password</label>
-      <label class="input"> <i class="icon-append fa fa-lock"></i>
-        <input type="password" name="password" #passwordRef = "ngModel" required ngModel>
-        <div [hidden] = "passwordRef.valid || passwordRef.pristine" class="alert alert-danger">
+      <label class="input">
+        <i class="icon-append fa fa-lock"></i>
+        <input type="password" name="password" #passwordRef="ngModel" required ngModel>
+        <div [hidden]="passwordRef.valid || passwordRef.pristine" class="alert alert-danger">
           Password is required
         </div>
       </label>
@@ -24,14 +26,24 @@
         <a routerLink="/auth/forgot-password">Forgot password?</a>
       </div>
     </section>
-    <section>
-      <label class="checkbox">
-        <input type="checkbox" name="remember" checked>
-      <i></i>Stay signed in</label>
-      <label class="text-danger" *ngIf="error">Invalid login : Combination of user name and password is not correct</label>
-    </section>
   </fieldset>
   <footer>
-    <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Sign in</button>
+    <button type="submit" class="btn btn-primary btn-lg btn-block" [disabled]="!loginForm.valid">Sign in</button>
   </footer>
+  <section class="text-center">
+    <h3>-- OR --</h3>
+  </section>
+  <div class="row">
+    <div class="col-12 text-center">
+      <a href="#" title="LinkedIn" (click)="rawApiCall()" class="btn btn-linkedin btn-sm"><i class="fa fa-linkedin fa-fw"></i>
+        LinkedIn</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col text-center">
+      <blockquote class="txt-color-teal">
+        <small>By clicking on Login, you are agreeing to Our Terms of Use and all other Privacy Policy</small>
+      </blockquote>
+    </div>
+  </div>
 </form>

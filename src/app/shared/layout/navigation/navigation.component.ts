@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {LoginInfoComponent} from "../../user/login-info/login-info.component";
-
+import { Component, OnInit } from '@angular/core';
+import { LoginInfoComponent } from "../../user/login-info/login-info.component";
+import { RoleBaseService } from '../../service/role-base.service';
 
 @Component({
 
@@ -9,10 +9,14 @@ import {LoginInfoComponent} from "../../user/login-info/login-info.component";
 })
 export class NavigationComponent implements OnInit {
 
-  constructor() {
+  public userRole: string;
+  constructor(private role: RoleBaseService) {
   }
 
   ngOnInit() {
+    this.role.role.subscribe(result => {
+      this.userRole = result;
+    });
   }
 
 }

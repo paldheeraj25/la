@@ -14,44 +14,67 @@
 
       <li routerLinkActive="active">
         <a routerLink="/dashboard/analytics" title="Home">
-          <i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">{{'Home' | i18n}}</span></a>
+          <i class="fa fa-lg fa-fw fa-home"></i>
+          <span class="menu-item-parent">{{'Home' | i18n}}</span>
+        </a>
       </li>
-      <li>
-        <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span
-          class="menu-item-parent">{{'Product Managment' | i18n}}</span></a>
+      <!-- <li routerLinkActive="active" *ngIf="userRole == 'college'">
+        <a routerLink="/home/college" title="Home">
+          <i class="fa fa-lg fa-fw fa-university"></i>
+          <span class="menu-item-parent">{{'college' | i18n}}</span>
+        </a>
+      </li> -->
+      <!-- <li>
+        <a href="#">
+          <i class="fa fa-lg fa-fw fa-desktop"></i>
+          <span class="menu-item-parent">{{'Product Managment' | i18n}}</span>
+        </a>
         <ul>
           <li routerLinkActive="active">
-            <a routerLink="/design" title="Design"><span class="menu-item-parent">{{'Design' | i18n}}</span></a>
-          </li>
-          <!--<li routerLinkActive="active">
-            <a routerLink="/product/create">{{'Product Batch Upload' | i18n}}</a>
-          </li>
-          <li routerLinkActive="active">
-            <a routerLink="/product/list">{{'Product Batch List' | i18n}}</a>
-          </li>-->
-          <li routerLinkActive="active">
+            <a routerLink="/design" title="Design">
+              <span class="menu-item-parent">{{'Design' | i18n}}</span>
+            </a>
+          </li> -->
+      <!-- <li routerLinkActive="active">
+        <a routerLink="/product/create">{{'Product Batch Upload' | i18n}}</a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/product/list">{{'Product Batch List' | i18n}}</a>
+      </li> -->
+      <!-- <li routerLinkActive="active">
             <a routerLink="/product/jewel/create">{{'Jewel Create' | i18n}}</a>
           </li>
           <li routerLinkActive="active">
             <a routerLink="/product/jewel/list">{{'Jewel List' | i18n}}</a>
           </li>
         </ul>
-      </li>
+      </li> -->
+      <!-- <li routerLinkActive="active">
+        <a routerLink="/advertisement" title="Advertisement">
+          <i class="fa fa-lg fa-fw fa-paper-plane"></i>
+          <span class="menu-item-parent">{{'Advertisement' | i18n}}</span>
+        </a>
+      </li> -->
       <li routerLinkActive="active">
-        <a routerLink="/advertisement" title="Advertisement"><i class="fa fa-lg fa-fw fa-paper-plane"></i> <span class="menu-item-parent">{{'Advertisement' | i18n}}</span></a>
+        <a routerLink="/home/company" title="Hire">
+          <i class="fa fa-lg fa-fw fa-user"></i>
+          <span class=" menu-item-parent ">{{'Hire' | i18n}}</span>
+        </a>
       </li>
-      <li>
-        <a href="#"><i class="fa fa-lg fa-fw fa-user"></i> <span
-          class="menu-item-parent">{{'User Managment' | i18n}}</span></a>
+      <!-- <li>
+        <a href="# ">
+          <i class="fa fa-lg fa-fw fa-user "></i>
+          <span class="menu-item-parent ">{{'User Managment' | i18n}}</span>
+        </a>
         <ul>
-          <li routerLinkActive="active">
-            <a routerLink="/user/create">{{'Create' | i18n}}</a>
+          <li routerLinkActive="active ">
+            <a routerLink="/user/create ">{{'Create' | i18n}}</a>
           </li>
-          <li routerLinkActive="active">
-            <a routerLink="/user/list">{{'List' | i18n}}</a>
+          <li routerLinkActive="active ">
+            <a routerLink="/user/list ">{{'List' | i18n}}</a>
           </li>
         </ul>
-      </li>
+      </li> -->
     </ul>
   </nav>
 
