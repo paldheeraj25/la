@@ -1,7 +1,7 @@
 <div class="show-loader" *ngIf="showLoader">
   <div>
     <i class="fa fa-5x fa-circle-o-notch fa-spin"></i>
-    <h3> Product upload in progress ...</h3>
+    <h3> Flower upload in progress ...</h3>
   </div>
 </div>
 <form id="checkout-form" class="smart-form" #productForm="ngForm" (ngSubmit)="uploader.queue[0].upload()" *ngIf="!showLoader"
@@ -29,7 +29,7 @@
     <div class="row">
       <section class="col col-6">
         <label class="input"> <i class="icon-prepend fa fa-calendar"></i>
-          <input type="date" name="manufacture" placeholder="Manufactured On"  date-format="dd/mm/yy" [(ngModel)]="manufacture" />
+          <input type="date" name="manufacture" placeholder="Manufactured On" date-format="dd/mm/yy" [(ngModel)]="manufacture" />
         </label>
       </section>
       <section class="col col-6">
@@ -44,48 +44,48 @@
     <div class="row">
       <section class="col col-6">
         <label class="input"> <i class="icon-prepend fa fa-cubes"></i>
-          <input type="text" #nameRef="ngModel" name="manOrMachine" placeholder="Man/Machine made" [(ngModel)]="manOrMachine"/>
+          <input type="text" #nameRef="ngModel" name="manOrMachine" placeholder="Man/Machine made" [(ngModel)]="manOrMachine" />
         </label>
       </section>
       <section class="col col-6">
         <label class="input"> <i class="icon-prepend fa fa-cubes"></i>
-          <input type="text" #batchRef="ngModel" name="goldCarat" placeholder="Gold Carat" [(ngModel)]="goldCarat"/>
-        </label>
-      </section>
-    </div>
-    <div class="row">
-      <section class="col col-6">
-        <label class="input"> <i class="icon-prepend fa fa-cubes"></i>
-          <input type="text" #nameRef="ngModel" name="percentChrg" placeholder="making % and charg" [(ngModel)]="percentChrg"/>
-        </label>
-      </section>
-      <section class="col col-6">
-        <label class="input"> <i class="icon-prepend fa fa-cubes"></i>
-          <input type="text" #batchRef="ngModel" name="grossWeight" placeholder="Gross Weight" [(ngModel)]="grossWeight"/>
+          <input type="text" #batchRef="ngModel" name="goldCarat" placeholder="Gold Carat" [(ngModel)]="goldCarat" />
         </label>
       </section>
     </div>
     <div class="row">
       <section class="col col-6">
         <label class="input"> <i class="icon-prepend fa fa-cubes"></i>
-          <input type="text" #nameRef="ngModel" name="netWeight" placeholder="Net Weight" [(ngModel)]="netWeight"/>
+          <input type="text" #nameRef="ngModel" name="percentChrg" placeholder="making % and charg" [(ngModel)]="percentChrg" />
         </label>
       </section>
       <section class="col col-6">
         <label class="input"> <i class="icon-prepend fa fa-cubes"></i>
-          <input type="text" #batchRef="ngModel" name="stoneWeight" placeholder="Stone Weight" [(ngModel)]="stoneWeight"/>
+          <input type="text" #batchRef="ngModel" name="grossWeight" placeholder="Gross Weight" [(ngModel)]="grossWeight" />
         </label>
       </section>
     </div>
     <div class="row">
       <section class="col col-6">
         <label class="input"> <i class="icon-prepend fa fa-cubes"></i>
-          <input type="text" #nameRef="ngModel" name="beadsWeight" placeholder="Beads Weight" [(ngModel)]="beadsWeight"/>
+          <input type="text" #nameRef="ngModel" name="netWeight" placeholder="Net Weight" [(ngModel)]="netWeight" />
         </label>
       </section>
       <section class="col col-6">
         <label class="input"> <i class="icon-prepend fa fa-cubes"></i>
-          <input type="text" #batchRef="ngModel" name="perGramWeight" placeholder="Per Gram Weight" [(ngModel)]="perGramWeight"/>
+          <input type="text" #batchRef="ngModel" name="stoneWeight" placeholder="Stone Weight" [(ngModel)]="stoneWeight" />
+        </label>
+      </section>
+    </div>
+    <div class="row">
+      <section class="col col-6">
+        <label class="input"> <i class="icon-prepend fa fa-cubes"></i>
+          <input type="text" #nameRef="ngModel" name="beadsWeight" placeholder="Beads Weight" [(ngModel)]="beadsWeight" />
+        </label>
+      </section>
+      <section class="col col-6">
+        <label class="input"> <i class="icon-prepend fa fa-cubes"></i>
+          <input type="text" #batchRef="ngModel" name="perGramWeight" placeholder="Per Gram Weight" [(ngModel)]="perGramWeight" />
         </label>
       </section>
     </div>
@@ -95,19 +95,19 @@
     <div class="row">
       <section class="col col-5">
         <label class="input">
-          <input type="text" name="heading" placeholder="Heading Title" [(ngModel)]="heading"/>
+          <input type="text" name="heading" placeholder="Heading Title" [(ngModel)]="heading" />
         </label>
       </section>
 
       <section class="col col-4">
         <label class="input">
-          <input type="text" name="country" placeholder="Country" [(ngModel)]="country"/>
+          <input type="text" name="country" placeholder="Country" [(ngModel)]="country" />
         </label>
       </section>
 
       <section class="col col-3">
         <label class="input">
-          <input type="text" name="city" placeholder="City" [(ngModel)]="city"/>
+          <input type="text" name="city" placeholder="City" [(ngModel)]="city" />
         </label>
       </section>
     </div>

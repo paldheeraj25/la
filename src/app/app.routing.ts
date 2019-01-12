@@ -58,6 +58,12 @@ export const routes: Routes = [
         canActivateChild: [AuthGaurd],
         loadChildren: 'app/user/user.module#UserModule',
         data: { pageTitle: 'User' }
+      },
+      {
+        path: 'flowers',
+        canActivate: [AuthGaurd],
+        canActivateChild: [AuthGaurd],
+        loadChildren: 'app/flowers/flowers.module#FlowersModule',
       }
     ]
   },

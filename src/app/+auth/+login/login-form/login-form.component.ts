@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from "../../../providers/auth/auth.service";
 import { Router } from "@angular/router";
 import { RoleBaseService } from '../../../shared/service/role-base.service';
 import { LinkedInService } from 'angular-linkedin-sdk';
+import { ISubscription } from "rxjs/Subscription";
 
 @Component({
   selector: 'auth-login-form',
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.css']
 })
-export class LoginFormComponent implements OnInit {
+export class LoginFormComponent implements OnInit, OnDestroy {
 
+  private subscription: ISubscription;
   public error: Boolean = false;
   public roles: string[] = ["student", "company"];
   public isUserAuthenticated;
@@ -30,7 +32,7 @@ export class LoginFormComponent implements OnInit {
 
   onSubmit(user) {
     this.submitted = true;
-    this.authService.login(user).subscribe(result => {
+    this.subscription = this.authService.login(user).subscribe(result => {
       this.error = false;
       localStorage.setItem('key', result.token);
       localStorage.setItem('Authorization', "Bearer " + result.token);
@@ -69,9 +71,12 @@ export class LoginFormComponent implements OnInit {
   }
 
   public subscribeToLogin() {
-    this._linkedInService.login().subscribe({
+    this.subscription = this._linkedInService.login().subscribe({
       next: (state) => {
         // state will always return true when login completed 
+        if (state) {
+          this.rawApiCall();
+        }
         console.log(state);
       },
       complete: () => {
@@ -123,5 +128,9 @@ export class LoginFormComponent implements OnInit {
           this.router.navigate(['/home/company']);
         }
       });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

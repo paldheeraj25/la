@@ -1,0 +1,106 @@
+<div id="content">
+  <div class="row">
+    <sa-big-breadcrumbs [items]="['Flowers', 'Create']" icon="pencil-square-o" class="col-xs-12 col-sm-9 col-md-9 col-lg-9"></sa-big-breadcrumbs>
+  </div>
+  <sa-widgets-grid>
+    <div class="row">
+      <div class="show-loader" *ngIf="showLoader">
+        <div>
+          <i class="fa fa-5x fa-circle-o-notch fa-spin"></i>
+          <h3> Product upload in progress ...</h3>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-success" *ngIf="flowerUploadSuccess">
+      <strong>Success!</strong> Flower upload successful.
+    </div>
+    <div class="row" *ngIf="!showLoader">
+      <article class="col-sm-12 col-md-12 col-lg-12">
+        <sa-widget [editbutton]="false" [custombutton]="false">
+          <div class="widget-body">
+            <form id="flower-form" class="smart-form" #flowerForm="ngForm" (ngSubmit)="saveFlower()">
+              <fieldset>
+                <div class="row">
+                  <section class="col col-4">
+                    <label class="input"> <i class="icon-prepend fa fa-cubes"></i>
+                      <input type="text" #titleRef="ngModel" required name="title" placeholder="Flower Name"
+                        [(ngModel)]="flower.name">
+                    </label>
+                    <div [hidden]="titleRef.valid || titleRef.pristine" class="alert alert-danger">
+                      Name is required
+                    </div>
+                  </section>
+                  <section class="col col-4">
+                    <label class="input"> <i class="icon-prepend fa fa-cubes"></i>
+                      <input type="number" #priceRef="ngModel" required name="price" placeholder="Flower Price"
+                        [(ngModel)]="flower.price">
+                    </label>
+                    <div [hidden]="priceRef.valid || priceRef.pristine" class="alert alert-danger">
+                      Price is required
+                    </div>
+                  </section>
+                  <section class="col col-4">
+                    <label class="input"> <i class="icon-prepend fa fa-cubes"></i>
+                      <input type="tag" #tagRef="ngModel" required name="tag" placeholder="Flower Tag" [(ngModel)]="flower.tag">
+                    </label>
+                    <div [hidden]="tagRef.valid || tagRef.pristine" class="alert alert-danger">
+                      Tag is required
+                    </div>
+                  </section>
+                </div>
+              </fieldset>
+              <fieldset>
+                <div class="row">
+                  <section class="col col-10">
+                    <label class="input"> <i class="icon-prepend fa fa-cubes"></i>
+                      <input type="text" #imageRef="ngModel" required name="image" placeholder="Flower Image"
+                        [(ngModel)]="flower.image">
+                    </label>
+                    <div [hidden]="imageRef.valid || imageRef.pristine" class="alert alert-danger">
+                      Image is required
+                    </div>
+                  </section>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <section>
+                  <label for="address" class="input">Flower Gallery Image urls</label>
+                </section>
+              </fieldset>
+              <fieldset>
+                <div class="row">
+                  <section class="col col-10">
+                    <label class="input"> <i class="icon-prepend fa fa-cubes"></i>
+                      <input type="text" #nameRef="ngModel" name="title" placeholder="Flower Gallery Image" [(ngModel)]="flower.gallery[0]">
+                    </label>
+                  </section>
+                  <section class="col col-10">
+                    <label class="input"> <i class="icon-prepend fa fa-cubes"></i>
+                      <input type="text" #nameRef="ngModel" name="title" placeholder="Flower Gallery Image" [(ngModel)]="flower.gallery[1]">
+                    </label>
+                  </section>
+                  <section class="col col-10">
+                    <label class="input"> <i class="icon-prepend fa fa-cubes"></i>
+                      <input type="text" #nameRef="ngModel" name="title" placeholder="Flower Gallery Image" [(ngModel)]="flower.gallery[2]">
+                    </label>
+                  </section>
+                  <section class="col col-10">
+                    <label class="input"> <i class="icon-prepend fa fa-cubes"></i>
+                      <input type="text" #nameRef="ngModel" name="title" placeholder="Flower Gallery Image" [(ngModel)]="flower.gallery[3]">
+                    </label>
+                  </section>
+                </div>
+              </fieldset>
+              <footer>
+                <button type="submit" value="submit" [disabled]="!flowerForm.valid" class="btn btn-primary">
+                  Submit
+                </button>
+              </footer>
+            </form>
+          </div>
+        </sa-widget>
+      </article>
+    </div>
+  </sa-widgets-grid>
+</div>

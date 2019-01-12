@@ -19,6 +19,8 @@ import { AuthService } from "./providers/auth/auth.service";
 import { FileUtil } from "./product/product-form/file.util";
 import { ProductDataService } from "./product/providers/product-data.service";
 import { JewelDataService } from "./product/providers/jewel-data.service";
+import { FlowerService } from './flowers/providers/flower.service';
+
 import { AdvertisementDataService } from "./advertisement/providers/advertisement-data.service";
 import { UserDataService } from './user/provider/user-data.service';
 import { APIService } from './shared/api.service';
@@ -37,6 +39,7 @@ const APP_PROVIDERS = [
   AuthGaurd,
   ProductDataService,
   JewelDataService,
+  FlowerService,
   FileUtil,
   AdvertisementDataService,
   UserDataService,
