@@ -1,0 +1,51 @@
+<div id="content">
+  <div class="row">
+    <sa-big-breadcrumbs [items]="['Flowers', 'Orders']" icon="table" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></sa-big-breadcrumbs>
+  </div>
+  <div class="row">
+    <article class="col-sm-12">
+      <sa-widget [editbutton]="false" color="darken">
+        <header><span class="widget-icon"> <i class="fa fa-table"></i> </span>
+          <h2>Orders</h2>
+        </header>
+        <div>
+          <div class="widget-body no-padding">
+            <table class="table table-striped" [mfData]="orders | async" #mf="mfDataTable" [mfRowsOnPage]="25">
+              <thead>
+                <tr>
+                  <th style="width: 20%">
+                    <mfDefaultSorter>Order By</mfDefaultSorter>
+                  </th>
+                  <th style="width: 20%">
+                    <mfDefaultSorter by="amount">Price</mfDefaultSorter>
+                  </th>
+                  <th style="width: 40%">
+                    <mfDefaultSorter by="address">Address</mfDefaultSorter>
+                  </th>
+                  <th style="width: 20%">
+                    <mfDefaultSorter by="phone_number">Mobile</mfDefaultSorter>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let order of mf.data">
+                  <td>{{order.order_detail?.name}}</td>
+                  <td>{{order.amount}}</td>
+                  <td>{{order.address}}</td>
+                  <td>{{order.phone_number}}</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="4">
+                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </sa-widget>
+    </article>
+  </div>
+</div>

@@ -8,6 +8,7 @@ import { DataTableModule } from "angular2-datatable";
 import { routing } from './flowers.routing';
 import { FlowerComponent } from './flower/flower.component';
 import { FlowersListComponent } from './flowers-list/flowers-list.component';
+import { FlowersOrdersComponent } from './flower-orders/flowers-orders.component';
 
 
 
@@ -18,6 +19,6 @@ import { FlowersListComponent } from './flowers-list/flowers-list.component';
     routing,
     DataTableModule
   ],
-  declarations: [FlowerComponent, FlowersListComponent]
+  declarations: [FlowerComponent, FlowersListComponent, FlowersOrdersComponent]
 })
 export class FlowersModule { }
