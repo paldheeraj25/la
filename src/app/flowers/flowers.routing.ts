@@ -1,5 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
 import { FlowerComponent } from "./flower/flower.component";
+import { FlowersListComponent } from './flowers-list/flowers-list.component';
 
 export const routes: Routes = [
   {
@@ -8,6 +9,10 @@ export const routes: Routes = [
   {
     path: 'create',
     component: FlowerComponent,
+  },
+  {
+    path: 'list',
+    component: FlowersListComponent,
   }
 ];
 

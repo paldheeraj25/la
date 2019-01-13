@@ -1,0 +1,58 @@
+<div id="content">
+  <div class="row">
+    <sa-big-breadcrumbs [items]="['Flowers', 'List']" icon="table" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></sa-big-breadcrumbs>
+  </div>
+  <div class="row">
+    <article class="col-sm-12">
+      <sa-widget [editbutton]="false" color="darken">
+        <header><span class="widget-icon"> <i class="fa fa-table"></i> </span>
+          <h2>Flowers</h2>
+        </header>
+        <div>
+          <div class="widget-body no-padding">
+            <table class="table table-striped" [mfData]="flowers | async" #mf="mfDataTable" [mfRowsOnPage]="25">
+              <thead>
+                <tr>
+                  <th style="width: 30%">
+                    <mfDefaultSorter by="name">Name</mfDefaultSorter>
+                  </th>
+                  <th style="width: 10%">
+                    <mfDefaultSorter by="price">Price</mfDefaultSorter>
+                  </th>
+                  <th style="width: 50%">
+                    <mfDefaultSorter by="image">Image</mfDefaultSorter>
+                  </th>
+                  <th style="width: 10%">
+                    <mfDefaultSorter>Action</mfDefaultSorter>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let flower of mf.data">
+                  <td>{{flower.name}}</td>
+                  <td>{{flower.price}}</td>
+                  <td>{{flower.image.substr(0, 40)}}...</td>
+                  <td>
+                    <div class="btn-group dropdown" dropdown>
+                      <p>
+                        <a class="btn btn-primary btn-xs" (click)="edit(flower)">edit</a>
+                        <a class="btn btn-primary btn-xs" (click)="remove(flower)">delet</a>
+                      </p>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="4">
+                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </sa-widget>
+    </article>
+  </div>
+</div>
