@@ -19,7 +19,6 @@ export class FlowersListComponent implements OnInit {
   }
 
   goToEdit(flower) {
-    console.log('go to edit ' + flower.id);
     this.router.navigate(['flowers/edit/' + flower.id]);
   }
 

@@ -45,7 +45,6 @@ export class FlowerComponent implements OnInit {
         this.showLoader = false;
       })
     } else {
-      console.log(this.editState);
       return this.flowerService.uploadProduct(this.flower).subscribe(data => {
         console.log(data);
         if (data) {

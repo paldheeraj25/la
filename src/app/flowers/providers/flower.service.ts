@@ -14,6 +14,8 @@ export class FlowerService {
   private flowerListUrl: string = "https://dry-plateau-78185.herokuapp.com/api/dashboard/flower/list";
   private getFlowerUrl: string = "https://dry-plateau-78185.herokuapp.com/api/dashboard/flower/select?id=";
   private updateFlowerUrl: string = "https://dry-plateau-78185.herokuapp.com/api/dashboard/flower/select/edit/";
+  private flowerOrdersUrl = "https://dry-plateau-78185.herokuapp.com/api/dashboard/flower/orders";
+
   constructor(private http: Http, private apiService: APIService) { console.log('flower service loded') }
 
   uploadProduct(flower: any): Observable<any> {
@@ -26,6 +28,7 @@ export class FlowerService {
     });
   }
 
+
   getFlower(id: string): Observable<any> {
     return this.apiService.getOne(this.getFlowerUrl, id).map(res => {
       return res;
@@ -34,6 +37,11 @@ export class FlowerService {
 
   updateFlower(id: string, data: any): Observable<any> {
     return this.apiService.createOne(this.updateFlowerUrl + id, data).map(res => {
+      return res;
+    });
+  }
+  getFlowerOrders(): Observable<any> {
+    return this.apiService.getAll(this.flowerOrdersUrl, {}).map(res => {
       return res;
     });
   }
