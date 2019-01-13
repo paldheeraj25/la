@@ -13,6 +13,10 @@ export const routes: Routes = [
   {
     path: 'list',
     component: FlowersListComponent,
+  },
+  {
+    path: 'edit/:id',
+    component: FlowerComponent
   }
 ];
 

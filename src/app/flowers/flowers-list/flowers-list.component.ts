@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FlowerService } from '../providers/flower.service';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,10 +12,15 @@ import { Observable } from 'rxjs';
 export class FlowersListComponent implements OnInit {
 
   public flowers: Observable<any[]>;
-  constructor(private flowerService: FlowerService) { }
+  constructor(private flowerService: FlowerService, private router: Router) { }
 
   ngOnInit() {
     this.flowers = this.flowerService.getFlowerList();
+  }
+
+  goToEdit(flower) {
+    console.log('go to edit ' + flower.id);
+    this.router.navigate(['flowers/edit/' + flower.id]);
   }
 
 }
