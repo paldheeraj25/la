@@ -10,11 +10,13 @@ import 'rxjs/add/operator/take';
 
 @Injectable()
 export class FlowerService {
-  private url: string = "https://dry-plateau-78185.herokuapp.com/api/chatfuel/flower/dashboard/upload";
-  private flowerListUrl: string = "https://dry-plateau-78185.herokuapp.com/api/dashboard/flower/list";
-  private getFlowerUrl: string = "https://dry-plateau-78185.herokuapp.com/api/dashboard/flower/select?id=";
-  private updateFlowerUrl: string = "https://dry-plateau-78185.herokuapp.com/api/dashboard/flower/select/edit/";
-  private flowerOrdersUrl = "https://dry-plateau-78185.herokuapp.com/api/dashboard/flower/orders";
+  private domainUrl: string = "http://pinnacle.lewiot.com:5012";
+  private url: string = this.domainUrl + "/api/chatfuel/flower/dashboard/upload";
+  private flowerListUrl: string = this.domainUrl + "/api/dashboard/flower/list?person=";
+  private getFlowerUrl: string = this.domainUrl + "/api/dashboard/flower/select?";
+  private updateFlowerUrl: string = this.domainUrl + "/api/dashboard/flower/select/edit/";
+  private flowerOrdersUrl = this.domainUrl + "/api/dashboard/flower/orders";
+  public personType: string = 'null';
 
   constructor(private http: Http, private apiService: APIService) { console.log('flower service loded') }
 
@@ -22,15 +24,14 @@ export class FlowerService {
     return this.apiService.createOne(this.url, flower)
   }
 
-  getFlowerList(): Observable<any> {
-    return this.apiService.getAll(this.flowerListUrl, {}).map(res => {
+  getFlowerList(person: string): Observable<any> {
+    return this.apiService.getAll(this.flowerListUrl + person, {}).map(res => {
       return res;
     });
   }
 
-
-  getFlower(id: string): Observable<any> {
-    return this.apiService.getOne(this.getFlowerUrl, id).map(res => {
+  getFlower(flowerQuery: string): Observable<any> {
+    return this.apiService.getOne(this.getFlowerUrl, flowerQuery).map(res => {
       return res;
     });
   }

@@ -51,7 +51,7 @@
               </fieldset>
               <fieldset>
                 <div class="row">
-                  <section class="col col-10">
+                  <section class="col col-5">
                     <label class="input"> <i class="icon-prepend fa fa-cubes"></i>
                       <input type="text" #imageRef="ngModel" required name="image" placeholder="Flower Image"
                         [(ngModel)]="flower.image">
@@ -59,6 +59,17 @@
                     <div [hidden]="imageRef.valid || imageRef.pristine" class="alert alert-danger">
                       Image is required
                     </div>
+                  </section>
+                  <section class="col col-5">
+                    <label class="select">
+                      <select name="person" #personRef="ngModel" [(ngModel)]="flower.person">
+                        <option value="null" selected disabled>person type</option>
+                        <option value="gfBf">gf/bf-red</option>
+                        <option value="wifeHusband">wife/husband-red/yelow</option>
+                        <option value="momDad">mom/dad-white</option>
+                        <option value="bestFriend">best friend-pink</option>
+                        <option value="friendRelative">friend/relative/other-pink</option>
+                      </select> <i></i> </label>
                   </section>
                 </div>
               </fieldset>

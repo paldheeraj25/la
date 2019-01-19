@@ -3,6 +3,23 @@
     <sa-big-breadcrumbs [items]="['Flowers', 'List']" icon="table" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></sa-big-breadcrumbs>
   </div>
   <div class="row">
+    <div class="widget-body">
+      <form id="flower-form" class="smart-form">
+        <section class="col col-5">
+          <label class="select">
+            <select class="custom-select" name="person" [(ngModel)]="person" (change)="onChange($event.target.value)">
+              <option value="null" selected disabled>person type</option>
+              <option value="gfBf">gf/bf-red</option>
+              <option value="wifeHusband">wife/husband-red/yelow</option>
+              <option value="momDad">mom/dad-white</option>
+              <option value="bestFriend">best friend-pink</option>
+              <option value="friendRelative">friend/relative/other-pink</option>
+            </select> <i></i> </label>
+        </section>
+      </form>
+    </div>
+  </div>
+  <div class="row">
     <article class="col-sm-12">
       <sa-widget [editbutton]="false" color="darken">
         <header><span class="widget-icon"> <i class="fa fa-table"></i> </span>

@@ -20,27 +20,30 @@ export class FlowerComponent implements OnInit {
   public editState: Boolean;
 
   ngOnInit() {
-    this.flower = { name: '', price: '', image: '', tag: '', gallery: [] };
+    this.flower = { name: '', price: '', image: '', person: 'null', tag: '', gallery: [] };
     if (this.activatedRoute.snapshot.params.id) {
+      console.log(this.flowerService.personType);
       this.flowerIdFromList = this.activatedRoute.snapshot.params.id;
       let flowerId = this.activatedRoute.snapshot.params.id;
       this.editState = true;
-      this.flowerService.getFlower(flowerId).subscribe(data => {
+      this.flowerService.getFlower('id=' + flowerId + "&person=" + this.flowerService.personType).subscribe(data => {
         this.flower.name = data.name;
         this.flower.price = data.price;
         this.flower.image = data.image;
         this.flower.gallery = data['image-collection'];
+        this.flower.person = data['person'] || 'null';
       });
     } else {
       this.editState = false;
-      this.flower = { name: '', price: '', image: '', tag: '', gallery: [] }
+      this.flower = { name: '', price: '', image: '', person: 'null', tag: '', gallery: [] }
     }
   }
 
   saveFlower() {
     this.showLoader = true;
     if (this.editState === true) {
-      this.flowerService.updateFlower(this.flowerIdFromList, this.flower).subscribe(data => {
+      var data = { flower: this.flower, person: this.flowerService.personType };
+      this.flowerService.updateFlower(this.flowerIdFromList, data).subscribe(data => {
         this.flowerUploadSuccess = true;
         this.showLoader = false;
       })
@@ -50,7 +53,7 @@ export class FlowerComponent implements OnInit {
         if (data) {
           this.flowerUploadSuccess = true;
         }
-        this.flower = { name: '', price: '', image: '', tag: '', gallery: [] };
+        this.flower = { name: '', price: '', image: '', person: 'null', tag: '', gallery: [] };
         this.showLoader = false;
       });
     }

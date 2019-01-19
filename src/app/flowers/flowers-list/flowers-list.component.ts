@@ -12,14 +12,19 @@ import { Router } from '@angular/router';
 export class FlowersListComponent implements OnInit {
 
   public flowers: Observable<any[]>;
+  public person: string = 'null';
   constructor(private flowerService: FlowerService, private router: Router) { }
 
   ngOnInit() {
-    this.flowers = this.flowerService.getFlowerList();
+    this.flowers = this.flowerService.getFlowerList(this.person);
   }
 
   goToEdit(flower) {
+    this.flowerService.personType = this.person;
     this.router.navigate(['flowers/edit/' + flower.id]);
   }
 
+  onChange(deviceValue) {
+    this.flowers = this.flowerService.getFlowerList(deviceValue);
+  }
 }
